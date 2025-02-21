@@ -2,7 +2,7 @@
 :root {
     --primary: #34AD54;
     --secondary: #FF9933;
-    --light: #F6FFF2;
+    --light: #f5f6fc;
     --dark: #263A4F;
 }
 
@@ -15,7 +15,7 @@
 
 .btn-primary,
 .btn-secondary {
-    color: #FFFFFF;
+    color: #eae0e0;
 }
 
 .btn-square {
@@ -149,6 +149,7 @@
 .custom-bg {
     background-image: url(../img/kukuwengiin.png);
     background-size: center;
+    /* background-color: black; */
     background-position: left;
     background-repeat: no-repeat;
     /* width: 100%; */
