@@ -54,7 +54,7 @@
     if ($(".product-carousel").length && $.fn.owlCarousel) {
         $(".product-carousel").owlCarousel({
             autoplay: true,
-            smartSpeed: 1000,
+            smartSpeed: 3000,
             margin: 45,
             dots: false,
             loop: true,
