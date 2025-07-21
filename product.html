@@ -41,6 +41,12 @@
                     <li><a href="team.html" class="nav-link">Team</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
+                <div class="cart-container" style="position: relative; margin-left: 18px;">
+                    <a href="checkout.html" class="cart-link" style="color: var(--primary); font-size: 1.6rem;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" style="position: absolute; top: -8px; right: -12px; background: var(--secondary); color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 0.85rem; font-weight: bold; display: none;">0</span>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -69,28 +75,28 @@
                 <div class="feature-item product-card">
                     <img src="img/jogoo.jpg" alt="Kuku Kienyeji" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Kuku Kienyeji</h4>
-                    <p>Traditional free-range chicken, healthy and delicious.</p>
+                    
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 1200.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Kuku Kienyeji" data-price="1200">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
                     <img src="img/chickfeeds.jpg" alt="Kuku Feeds" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Kuku Feeds</h4>
-                    <p>High-quality feeds for optimal poultry growth.</p>
+                    
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 2200.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Kuku Feeds" data-price="2200">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/eegggss3334.jpg" alt="Eggs" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Eggs</h4>
-                    <p>Fresh organic eggs, rich in nutrients.</p>
-                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 20.00</div>
+                    <img src="img/egg-png-ima.png" alt="Eggs" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Improved Egg</h4>
+                   
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 30.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Eggs" data-price="20">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
                     <img src="img/chicksM.jpg" alt="Kienyeji Chickens" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Kienyeji Chickens</h4>
-                    <p>Hardy indigenous chickens, perfect for free-range farming.</p>
+                    <h4>Kienyeji Chicks</h4>
+                    
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 350.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Kienyeji Chickens" data-price="350">Add to Cart</button>
                 </div>
@@ -100,30 +106,58 @@
                 <!-- <h3 class="section-title font-display" style="text-align:center; margin-bottom: 30px;">Related Products</h3> -->
                 <div class="grid grid-4">
                     <div class="feature-item product-card">
-                        <img src="img/chickfeeds.jpg" alt="Organic Feed" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Organic Feed</h4>
-                        <p>Premium feed for healthy poultry growth.</p>
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 800.00</div>
+                        <img src="img/poultry-chick-crumbs-coccidiosta.png" alt="Organic Feed" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Strater Crumbs</h4>
+                        
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 5000.00</div>
                         <button class="newsletter-btn add-to-cart" data-name="Organic Feed" data-price="800">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
-                        <img src="img/chicksM2.png" alt="Vaccinated Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Vaccinated Chicks</h4>
-                        <p>Day-old chicks, fully vaccinated and ready for your farm.</p>
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 150.00</div>
+                        <img src="img/broiler-starter-mash-feed-500x50.png" alt="Vaccinated Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Finisher Mash</h4>
+                        
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 4500.00</div>
                         <button class="newsletter-btn add-to-cart" data-name="Vaccinated Chicks" data-price="150">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
                         <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Farm Tools</h4>
-                        <p>Essential tools for efficient poultry farming.</p>
+                        <h4>Kienyeji Eggs</h4>
+                        
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Improved 6pck Eggs</h4>
+                        
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Improved 6pck Eggs</h4>
+                        
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Improved 6pck Eggs</h4>
+                        
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Improved 6pck Eggs</h4>
+                        
                         <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
                         <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
                         <img src="img/eegggss3334.jpg" alt="Egg Trays" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                         <h4>Egg Trays</h4>
-                        <p>Durable trays for safe egg storage and transport.</p>
+                        
                         <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 100.00</div>
                         <button class="newsletter-btn add-to-cart" data-name="Egg Trays" data-price="100">Add to Cart</button>
                     </div>
@@ -143,28 +177,28 @@
                 <div class="feature-item product-card">
                     <img src="img/product-1.png" alt="Broiler Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Broiler Chicks</h4>
-                    <p>Fast-growing broiler chicks for meat production.</p>
+                   
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 100.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Broiler Chicks" data-price="100">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
                     <img src="img/product-2.png" alt="Layer Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Layer Chicks</h4>
-                    <p>High-yield layer chicks for egg production.</p>
+                    
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 120.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Layer Chicks" data-price="120">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
                     <img src="img/chicksM2.png" alt="Improved Kienyeji" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Improved Kienyeji</h4>
-                    <p>Improved breed for better productivity and resilience.</p>
+                   
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 999.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Improved Kienyeji" data-price="999">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
                     <img src="img/hen.png" alt="Parent Stock" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Parent Stock</h4>
-                    <p>Healthy parent stock for breeding and farm expansion.</p>
+                    
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 2500.00</div>
                     <button class="newsletter-btn add-to-cart" data-name="Parent Stock" data-price="2500">Add to Cart</button>
                 </div>
@@ -231,32 +265,17 @@
         </div>
     </footer>
 
-    <!-- Add to Cart Functionality -->
-    <script>
-        // Simple cart logic for demo
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        function updateCartCount() {
-            // You can add a cart count badge if needed
-        }
-        function addToCart(event) {
-            const btn = event.target.closest('.add-to-cart');
-            if (!btn) return;
-            const name = btn.getAttribute('data-name');
-            const price = parseFloat(btn.getAttribute('data-price'));
-            const product = { name, price, quantity: 1 };
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push(product);
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${name} added to cart!`);
-        }
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', addToCart);
-        });
-        document.addEventListener('DOMContentLoaded', updateCartCount);
-    </script>
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+      <div class="cart-modal-content">
+        <span class="cart-modal-close" id="closeCartModal">&times;</span>
+        <h3 style="margin-bottom: 18px;">Your Cart</h3>
+        <div id="cartModalItems"></div>
+        <div id="cartModalTotal" style="margin-top: 18px; font-weight: bold;"></div>
+        <a href="checkout.html" class="newsletter-btn" style="margin-top: 18px; display: inline-block;">Go to Checkout</a>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
