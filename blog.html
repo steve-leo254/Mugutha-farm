@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>FarmFresh - Organic Farm Website Template</title>
+    <title>Secol Poultry </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -13,10 +13,12 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -27,376 +29,402 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/about.css">
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid px-5 d-none d-lg-block">
-        <div class="row gx-5 py-3 align-items-center">
-            <div class="col-lg-3">
-                <div class="d-flex align-items-center justify-content-start">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
-                    <h2 class="mb-0">+012 345 6789</h2>
+    <!-- Header -->
+    <header class="header">
+        <div class="topbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span><i class="fas fa-phone"></i> +254-758-510-206</span>
+                    <span><i class="fas fa-envelope"></i> secolpoultry254@gmail.com</span>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="index.html" class="navbar-brand ms-lg-5">
-                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">SECOL POULTRY</span></h1>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="d-flex align-items-center justify-content-end">
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Topbar End -->
+        <nav class="navbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-egg"></i>
+                    SECOL POULTRY
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="service.html" class="nav-link">Services</a></li>
+                    <li><a href="product.html" class="nav-link">Products</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="feature.html" class="nav-link">Features</a></li>
+                    <li><a href="team.html" class="nav-link">Team</a></li>
+                    <li><a href="testimonial.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
-        <a href="index.html" class="navbar-brand d-flex d-lg-none">
-            <h1 class="m-0 display-4 text-secondary"><span class="text-white">SECOL POULTRY</span></h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <a href="product.html" class="nav-item nav-link">Product</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="blog.html" class="dropdown-item active">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">The Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="font-display">Blog & News</h1>
+                <p>Welcome to our blog, where we share the latest news, expert tips, and inspiring success stories from
+                    SECOL POULTRY. Dive into practical advice for farmers, discover innovations in organic poultry and
+                    fish farming, and get to know the people and passion behind our mission. Join our community and stay
+                    informed on everything happening at SECOL POULTRY!</p>
+                <a href="#blog-list" class="btn-hero">
+                    Explore Blog <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </nav>
-    <!-- Navbar End -->
+    </section>
 
 
     <!-- Hero Start -->
-    <div class="container-fluid bg-primary py-5 bg-hero mb-5">
-        <div class="container py-5">
-            <div class="row justify-content-start">
-                <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="display-1 text-white mb-md-4">Blog Grid</h1>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                    <a href="" class="btn btn-secondary py-md-3 px-md-5">Blog Grid</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Hero End -->
 
 
     <!-- Blog Start -->
-    <div class="container py-5">
-        <div class="row g-5">
-            <!-- Blog list Start -->
-            <div class="col-lg-8">
-                <div class="row g-5">
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+    <section id="blog-list" class="about">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Blog list Start -->
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/layer-mash-chicken-feed-500x500.png" alt="">
+                                <a class="blog-overlay" href="img/Secol-FEED-FORMULAE-Chick-Mash.pdf">
+                                    <h4 class="text-white">Chick’s Mash Formulae</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2024</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/Poultry-Grower-Regular-Mash-1-60.png" alt="">
+                                <a class="blog-overlay" href="img/Secol-FEED-FORMULAE-Growers-Mash.pdf">
+                                    <h4 class="text-white">Grower’s Mash Formulae</h4>
+                                    <span class="text-white fw-bold"> June 11, 2024</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/layer-mash-500x500.png" alt="" height">
+                                <a class="blog-overlay" href="img/Secol-FEED-FORMULAE-Layers-Mash.pdf">
+                                    <h4 class="text-white">Layer’s Mash Formulae</h4>
+                                    <span class="text-white fw-bold">July 01, 2024</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/Chase Category Icon.png" alt="">
+                                <a class="blog-overlay" href="img/Chicken-house-information.pdf">
+                                    <h4 class="text-white">CHICKEN HOUSE ADVICE</h4>
+                                    <span class="text-white fw-bold">August 01, 2024</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/checkouse.png" alt="">
+                                <a class="blog-overlay" href="img/Chicken_Farm_Blueprint.pdf">
+                                    <h4 class="text-white">CHICKEN HOUSE PLAN</h4>
+                                    <span class="text-white fw-bold">October 01, 2024</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/burdgodese.png" alt="">
+                                <a class="blog-overlay" href="img/Secol Poultry.pdf">
+                                    <h4 class="text-white">Gumboro Disease or Infectious Bursal Disease (IBD)</h4>
+                                    <span class="text-white fw-bold">Nov 1, 2024</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/hands-female-veterinarian-white.png" alt="">
+                                <a class="blog-overlay" href="img/Secol Poultrykienva.pdf">
+                                    <h4 class="text-white"> Kienyeji Chicken vaccination schedule</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2025</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-2.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/chickfeeddaa.png" alt="">
+                                <a class="blog-overlay" href="img/Secol-Schedule.pdf">
+                                    <h4 class="text-white">Feeds Schedule</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2025</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-3.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/chickens-feed-kdroves-4460374_64.png" alt="">
+                                <a class="blog-overlay"
+                                    href="img/making-own-poultry-feeds-formulae-rations-ingredients.pdf">
+                                    <h4 class="text-white">Kienyeji Improved FEEDS FORMULAE</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2025</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/blog-1.jpg" alt="">
-                            <a class="blog-overlay" href="">
-                                <h4 class="text-white">Lorem elitr magna stet eirmod labore amet</h4>
-                                <span class="text-white fw-bold">Jan 01, 2050</span>
-                            </a>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/chickens-feed-kdroves-4460374_64.png" alt="">
+                                <a class="blog-overlay"
+                                    href="img/making-own-poultry-feeds-formulae-rations-ingredients.pdf">
+                                    <h4 class="text-white">Kienyeji Improved FEEDS FORMULAE</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2025</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <nav aria-label="Page navigation">
-                          <ul class="pagination pagination-lg justify-content-center m-0">
-                            <li class="page-item disabled">
-                              <a class="page-link rounded-0" href="#" aria-label="Previous">
-                                <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
-                              </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link rounded-0" href="#" aria-label="Next">
-                                <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/chickens-feed-kdroves-4460374_64.png" alt="">
+                                <a class="blog-overlay"
+                                    href="img/making-own-poultry-feeds-formulae-rations-ingredients.pdf">
+                                    <h4 class="text-white">Kienyeji Improved FEEDS FORMULAE</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2025</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog-item position-relative overflow-hidden">
+                                <img class="img-fluid" src="img/fishstock.png" alt="">
+                                <a class="blog-overlay" href="">
+                                    <h4 class="text-white">integrated Fish farming,ducks in fish-ponds</h4>
+                                    <span class="text-white fw-bold">Jan 01, 2025</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination pagination-lg justify-content-center m-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link rounded-0" href="#" aria-label="Previous">
+                                            <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link rounded-0" href="#" aria-label="Next">
+                                            <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
+                <!-- Blog list End -->
+
+                <!-- Sidebar Start -->
+                <div class="col-lg-4">
+                    <!-- Search Form Start -->
+                    <div class="mb-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3" placeholder="Keyword">
+                            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                    <!-- Search Form End -->
+
+                    <!-- Category Start -->
+                    <div class="feature-item"
+                        style="background: #76ba4c; border-radius: 16px; box-shadow: var(--shadow); padding: 30px; text-align: center; margin-bottom: 30px;">
+                        <h2 class="section-title font-display" style="font-size: 1.1rem; color: #fff;">Did You Know?
+                        </h2>
+                        <p style="color: #fff; font-size: 1.15rem; font-weight: 500; margin-bottom: 18px;">A chicken can
+                            remember over <b>100 different faces</b> of people or animals! Chickens are much smarter
+                            than most people think.</p>
+                        <p style="color: #fff; font-size: 1.15rem; font-weight: 500; margin-bottom: 18px;">Chickens can
+                            <b>dream</b> just like humans! They experience REM (Rapid Eye Movement) sleep, which is
+                            associated with dreaming.
+                        </p>
+                        <p style="color: #fff; font-size: 1.15rem; font-weight: 500; margin: 0;">Eggshell color does
+                            <b>not</b> affect the taste or nutritional value of the egg—brown, white, and even blue eggs
+                            are all equally healthy!
+                        </p>
+                    </div>
+                    <!-- Category End -->
+
+                    <!-- Latest News Start -->
+                    <div class="feature-item"
+                        style="background: #fff; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 30px; padding: 0 0 20px 0;">
+                        <div style="display: flex; align-items: flex-end; margin-bottom: 20px;">
+                            <div
+                                style="background: #444; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 10px 28px 10px 18px; text-transform: uppercase; letter-spacing: 1px; border-radius: 0;">
+                                LATEST NEWS</div>
+                            <div
+                                style="flex: 1; height: 6px; background: none; border-bottom: 4px solid #444; margin-left: 0;">
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 22px; padding: 0 20px;">
+                            <div style="display: flex; gap: 18px; align-items: flex-start;">
+                                <img src="img/Effective-Fish-Pond-Construction.png"
+                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 4px;"
+                                    alt="Wetlands">
+                                <div>
+                                    <div
+                                        style="font-weight: 700; font-size: 1.05rem; color: #222; line-height: 1.2; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        Vanishing Wetlands Threaten Africa’s Future – $39 Trillion At Stake, New...
+                                    </div>
+                                    <div style="color: #aaa; font-size: 1rem; margin-top: 4px;">July 18, 2025</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 18px; align-items: flex-start;">
+                                <img src="img/team-3.jpg"
+                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 4px;"
+                                    alt="Family Planning">
+                                <div>
+                                    <div
+                                        style="font-weight: 700; font-size: 1.05rem; color: #222; line-height: 1.2; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        Why I Had My Tubes Tied: The Fight For Family Planning...</div>
+                                    <div style="color: #aaa; font-size: 1rem; margin-top: 4px;">July 17, 2025</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 18px; align-items: flex-start;">
+                                <img src="img/team-2.jpg"
+                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 4px;"
+                                    alt="Empowering Women">
+                                <div>
+                                    <div
+                                        style="font-weight: 700; font-size: 1.05rem; color: #222; line-height: 1.2; max-width: 200px; white-space: normal;">
+                                        Voices In The Shadows: Empowering Women In Climate-Induced Conflict Zones</div>
+                                    <div style="color: #aaa; font-size: 1rem; margin-top: 4px;">July 17, 2025</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 18px; align-items: flex-start;">
+                                <img src="img/blog-2.jpg"
+                                    style="width: 75px; height: 75px; object-fit: cover; border-radius: 4px;"
+                                    alt="Legal Barriers">
+                                <div>
+                                    <div
+                                        style="font-weight: 700; font-size: 1.05rem; color: #222; line-height: 1.2; max-width: 200px; white-space: normal;">
+                                        Chief Justice Koome Rallies Africa To Dismantle Legal Barriers For Women</div>
+                                    <div style="color: #aaa; font-size: 1rem; margin-top: 4px;">July 17, 2025</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Latest News End -->
+
+                    <!-- Image Start -->
+                    <div class="mb-5">
+                        <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
+                    </div>
+                    <!-- Image End -->
+
+                    <!-- Tags Start -->
+                    <div class="mb-5">
+                        <h2 class="mb-4">Poultry Hub</h2>
+                        <div class="d-flex flex-wrap m-n1">
+                            <a href="" class="btn btn-primary m-1">Kienyeji</a>
+                            <a href="" class="btn btn-primary m-1">Broiler</a>
+                            <a href="" class="btn btn-primary m-1">Layer’s</a>
+                            <a href="" class="btn btn-primary m-1">Fish-Stocking</a>
+                            <a href="" class="btn btn-primary m-1">Drip Farms</a>
+                            <a href="" class="btn btn-primary m-1">Hatching</a>
+                            <a href="" class="btn btn-primary m-1">Capital Investment</a>
+                            <a href="" class="btn btn-primary m-1">Management</a>
+                            <!-- <a href="" class="btn btn-primary m-1">Wate Management</a> -->
+                            <a href="" class="btn btn-primary m-1">Disease Control</a>
+                            <a href="" class="btn btn-primary m-1"> Fish Farming</a>
+                            <a href="" class="btn btn-primary m-1">Chick Farming</a>
+                        </div>
+                    </div>
+                    <!-- Tags End -->
+
+                    <!-- Plain Text Start -->
+                    <div class="feature-item"
+                        style="background: #76ba4c; border-radius: 16px; box-shadow: var(--shadow); padding: 30px; text-align: center;">
+                        <h2 class="section-title font-display" style="font-size: 1.1rem;">A Little Reminder</h2>
+                        <p style="color: #fff;">We believe in using our products and services to help people live
+                            healthier, happier, and more fulfilling lives. We work to provide opportunities to create
+                            more wealth for everyone by producing food in a way that is safe, sustainable, and good for
+                            the environment.</p>
+                        <a href="" class="btn-hero" style="padding: 8px 18px; font-size: 1em; margin-top: 10px;">Read
+                            More</a>
+                    </div>
+                    <!-- Plain Text End -->
+                </div>
+                <!-- Sidebar End -->
             </div>
-            <!-- Blog list End -->
-
-            <!-- Sidebar Start -->
-            <div class="col-lg-4">
-                <!-- Search Form Start -->
-                <div class="mb-5">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-3" placeholder="Keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-                <!-- Search Form End -->
-
-                <!-- Category Start -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Categories</h2>
-                    <div class="d-flex flex-column justify-content-start bg-primary p-4">
-                        <a class="fs-5 fw-bold text-white mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>Web Design</a>
-                        <a class="fs-5 fw-bold text-white mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>Web Development</a>
-                        <a class="fs-5 fw-bold text-white mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>Web Development</a>
-                        <a class="fs-5 fw-bold text-white mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>Keyword Research</a>
-                        <a class="fs-5 fw-bold text-white" href="#"><i class="bi bi-arrow-right me-2"></i>Email Marketing</a>
-                    </div>
-                </div>
-                <!-- Category End -->
-
-                <!-- Recent Post Start -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Recent Post</h2>
-                    <div class="bg-primary p-4">
-                        <div class="d-flex overflow-hidden mb-3">
-                            <img class="img-fluid flex-shrink-0" src="img/blog-1.jpg" style="width: 75px;" alt="">
-                            <a href="" class="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0">Lorem ipsum dolor sit amet elit
-                            </a>
-                        </div>
-                        <div class="d-flex overflow-hidden mb-3">
-                            <img class="img-fluid flex-shrink-0" src="img/blog-2.jpg" style="width: 75px;" alt="">
-                            <a href="" class="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0">Lorem ipsum dolor sit amet elit
-                            </a>
-                        </div>
-                        <div class="d-flex overflow-hidden mb-3">
-                            <img class="img-fluid flex-shrink-0" src="img/blog-3.jpg" style="width: 75px;" alt="">
-                            <a href="" class="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0">Lorem ipsum dolor sit amet elit
-                            </a>
-                        </div>
-                        <div class="d-flex overflow-hidden mb-3">
-                            <img class="img-fluid flex-shrink-0" src="img/blog-1.jpg" style="width: 75px;" alt="">
-                            <a href="" class="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0">Lorem ipsum dolor sit amet elit
-                            </a>
-                        </div>
-                        <div class="d-flex overflow-hidden">
-                            <img class="img-fluid flex-shrink-0" src="img/blog-2.jpg" style="width: 75px;" alt="">
-                            <a href="" class="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0">Lorem ipsum dolor sit amet elit
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Recent Post End -->
-
-                <!-- Image Start -->
-                <div class="mb-5">
-                    <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
-                </div>
-                <!-- Image End -->
-
-                <!-- Tags Start -->
-                <div class="mb-5">
-                    <h2 class="mb-4">Tag Cloud</h2>
-                    <div class="d-flex flex-wrap m-n1">
-                        <a href="" class="btn btn-primary m-1">Design</a>
-                        <a href="" class="btn btn-primary m-1">Development</a>
-                        <a href="" class="btn btn-primary m-1">Marketing</a>
-                        <a href="" class="btn btn-primary m-1">SEO</a>
-                        <a href="" class="btn btn-primary m-1">Writing</a>
-                        <a href="" class="btn btn-primary m-1">Consulting</a>
-                        <a href="" class="btn btn-primary m-1">Design</a>
-                        <a href="" class="btn btn-primary m-1">Development</a>
-                        <a href="" class="btn btn-primary m-1">Marketing</a>
-                        <a href="" class="btn btn-primary m-1">SEO</a>
-                        <a href="" class="btn btn-primary m-1">Writing</a>
-                        <a href="" class="btn btn-primary m-1">Consulting</a>
-                    </div>
-                </div>
-                <!-- Tags End -->
-
-                <!-- Plain Text Start -->
-                <div>
-                    <h2 class="mb-4">Plain Text</h2>
-                    <div class="bg-primary text-center text-white" style="padding: 30px;">
-                        <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>
-                        <a href="" class="btn btn-secondary py-2 px-4">Read More</a>
-                    </div>
-                </div>
-                <!-- Plain Text End -->
-            </div>
-            <!-- Sidebar End -->
         </div>
-    </div>
+    </section>
     <!-- Blog End -->
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-footer bg-primary text-white mt-5">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="row gx-5">
-                <div class="col-lg-8 col-md-6">
-                    <div class="row gx-5">
-                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                            <h4 class="text-white mb-4">Get In Touch</h4>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-geo-alt text-white me-2"></i>
-                                <p class="text-white mb-0">123 Street, New York, USA</p>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-envelope-open text-white me-2"></i>
-                                <p class="text-white mb-0">steveleo@gmail.com</p>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-telephone text-white me-2"></i>
-                                <p class="text-white mb-0">+254758510206</p>
-                            </div>
-                            <div class="d-flex mt-4">
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Home</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>About Us</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
-                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-white mb-4">Popular Links</h4>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Home</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>About Us</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
-                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
-                            </div>
-                        </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 10px;"></i>
+                        Iruma Keria , Tharaka-nithi
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-envelope" style="color: var(--secondary); margin-right: 10px;"></i>
+                        secolpoultry254@gmail.com
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-phone" style="color: var(--secondary); margin-right: 10px;"></i>
+                        +254758510206
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mt-lg-n5">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
-                        <h4 class="text-white">Newsletter</h4>
-                        <h6 class="text-white">Subscribe Our Newsletter</h6>
-                        <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-                        <form action="">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                <button class="btn btn-primary">Sign Up</button>
-                            </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="service.html" class="footer-link">Our Services</a>
+                    <a href="team.html" class="footer-link">Meet The Team</a>
+                    <a href="blog.html" class="footer-link">Latest Blog</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <a href="#" class="footer-link">Organic Eggs</a>
+                    <a href="#" class="footer-link">Free Range Chicken</a>
+                    <a href="#" class="footer-link">Farm Consulting</a>
+                    <a href="#" class="footer-link">Sustainable Farming</a>
+                    <a href="#" class="footer-link">Farm Tours</a>
+                </div>
+                <div class="footer-section">
+                    <div class="newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to our newsletter for the latest updates and organic farming tips</p>
+                        <form class="newsletter-form"
+                            style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 20px;">
+                            <input type="email" class="newsletter-input" placeholder="Your Email" required
+                                style="width: 100%;">
+                            <button type="submit" class="newsletter-btn" style="width: 100%;">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <div class="footer-bottom">
+                &copy; 2025 SECOL POULTRY. All Rights Reserved.
+            </div>
         </div>
-    </div>
-    <div class="container-fluid bg-dark text-white py-4">
-        <div class="container text-center">
-            <p class="mb-0">&copy; <a class="text-secondary fw-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by <a class="text-secondary fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
-            <br>Distributed By: <a class="text-secondary fw-bold" href="https://github/steve-leo254" target="_blank">Muthure</a>
-        </div>
-    </div>
-    <!-- Footer End -->
+    </footer>
 
 
     <!-- Back to Top -->

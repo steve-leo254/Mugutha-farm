@@ -2,277 +2,491 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>FarmFresh - Organic Farm Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECOL POULTRY - Our Services</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/about.css">
+    <style>
+        .services-grid {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 85, 48, 0.9), rgba(231, 111, 81, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-title {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .service-card:hover .service-title {
+            transform: translateY(0);
+        }
+
+        .service-date {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.2s;
+        }
+
+        .service-card:hover .service-date {
+            transform: translateY(0);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s ease 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid px-5 d-none d-lg-block">
-        <div class="row gx-5 py-3 align-items-center">
-            <div class="col-lg-3">
-                <div class="d-flex align-items-center justify-content-start">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
-                    <h2 class="mb-0">+012 345 6789</h2>
+    <!-- Header -->
+    <header class="header">
+        <div class="topbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span><i class="fas fa-phone"></i> +254758-510-206</span>
+                    <span><i class="fas fa-envelope"></i> secolpoultry254@gmail.com</span>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="index.html" class="navbar-brand ms-lg-5">
-                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">SECOL POULTRY</span></h1>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="d-flex align-items-center justify-content-end">
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
-        <a href="index.html" class="navbar-brand d-flex d-lg-none">
-            <h1 class="m-0 display-4 text-secondary"><span class="text-white">SECOL POULTRY</span></h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link active">Service</a>
-                <a href="product.html" class="nav-item nav-link">Product</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">The Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+        <nav class="navbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-egg"></i>
+                    SECOL POULTRY
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="service.html" class="nav-link active">Services</a></li>
+                    <li><a href="product.html" class="nav-link">Products</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
             </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+        </nav>
+    </header>
 
-
-    <!-- Hero Start -->
-    <div class="container-fluid bg-primary py-5 bg-hero mb-5">
-        <div class="container py-5">
-            <div class="row justify-content-start">
-                <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="display-1 text-white mb-md-4">Our Services</h1>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                    <a href="" class="btn btn-secondary py-md-3 px-md-5">Services</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero End -->
-
-
-    <!-- Services Start -->
-    <div class="container-fluid py-5">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <div class="mb-3">
-                        <h6 class="text-primary text-uppercase">Services</h6>
-                        <h1 class="display-5">Organic Farm Services</h1>
-                    </div>
-                    <p class="mb-4">Tempor erat elitr at rebum at at clita. Diam dolor diam ipsum et tempor sit. Clita erat ipsum et lorem et sit sed stet labore</p>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5">Contact Us</a>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light text-center p-5">
-                        <i class="fa fa-carrot display-1 text-primary mb-3"></i>
-                        <h4>Fresh Vegetables</h4>
-                        <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light text-center p-5">
-                        <i class="fa fa-apple-alt display-1 text-primary mb-3"></i>
-                        <h4>Fresh Fruits</h4>
-                        <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light text-center p-5">
-                        <i class="fa fa-dog display-1 text-primary mb-3"></i>
-                        <h4>Healty Cattle</h4>
-                        <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light text-center p-5">
-                        <i class="fa fa-tractor display-1 text-primary mb-3"></i>
-                        <h4>Modern Truck</h4>
-                        <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light text-center p-5">
-                        <i class="fa fa-seedling display-1 text-primary mb-3"></i>
-                        <h4>Farming Plans</h4>
-                        <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita nonumy dolor magna dolor vero</p>
-                    </div>
-                </div>
+            <div class="hero-content">
+                <h1 class="font-display">Our Premium Services</h1>
+                <p>We believe in a holistic approach to organic poultry farming. At SECOL POULTRY, our mission extends
+                    beyond delivering exceptional products; we are committed to sharing our extensive expertise and
+                    actively fostering sustainable agricultural practices within the vibrant heart of Mt. Kenya and its
+                    surrounding regions.</p>
             </div>
         </div>
-    </div>
-    <!-- Services End -->
+    </section>
 
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid bg-testimonial py-5 mt-5" style="margin-bottom: 135px;">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <div class="owl-carousel testimonial-carousel p-5">
-                        <div class="testimonial-item text-center text-white">
-                            <img class="img-fluid mx-auto p-2 border border-5 border-secondary rounded-circle mb-4" src="img/testimonial-2.jpg" alt="">
-                            <p class="fs-5">Dolores sed duo clita justo dolor et stet lorem kasd dolore lorem ipsum. At lorem lorem magna ut et, nonumy labore diam erat. Erat dolor rebum sit ipsum.</p>
-                            <hr class="mx-auto w-25">
-                            <h4 class="text-white mb-0">Client Name</h4>
-                        </div>
-                        <div class="testimonial-item text-center text-white">
-                            <img class="img-fluid mx-auto p-2 border border-5 border-secondary rounded-circle mb-4" src="img/testimonial-2.jpg" alt="">
-                            <p class="fs-5">Dolores sed duo clita justo dolor et stet lorem kasd dolore lorem ipsum. At lorem lorem magna ut et, nonumy labore diam erat. Erat dolor rebum sit ipsum.</p>
-                            <hr class="mx-auto w-25">
-                            <h4 class="text-white mb-0">Client Name</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-    
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-footer bg-primary text-white mt-5">
+    <!-- Services Grid -->
+    <div class="services-grid">
         <div class="container">
-            <div class="row gx-5">
-                <div class="col-lg-8 col-md-6">
-                    <div class="row gx-5">
-                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                            <h4 class="text-white mb-4">Get In Touch</h4>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-geo-alt text-white me-2"></i>
-                                <p class="text-white mb-0">123 Street, New York, USA</p>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-envelope-open text-white me-2"></i>
-                                <p class="text-white mb-0">steveleo@gmail.com</p>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-telephone text-white me-2"></i>
-                                <p class="text-white mb-0">+254758510206</p>
-                            </div>
-                            <div class="d-flex mt-4">
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
+            <div class="section-header">
+                <p class="section-subtitle">What We Offer</p>
+                <h2 class="section-title">Comprehensive Farming Solutions</h2>
+            </div>
+            <div class="grid">
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="img/Layers_poultry_farming.png" alt="Twende Ground">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Twende Ground</h4>
+                            <span class="service-date">Jan 01, 2024</span>
                         </div>
-                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Home</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>About Us</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
-                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-white mb-4">Popular Links</h4>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Home</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>About Us</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
-                                <a class="text-white mb-2" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
-                                <a class="text-white" href="#"><i class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
-                            </div>
+                        <div class="service-icon">
+                            <i class="fas fa-seedling"></i>
                         </div>
                     </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Farm Visit</h3>
+                        <p class="service-description">There's no better way to understand our unwavering commitment to
+                            organic excellence and sustainable agriculture than to see it for yourself.Join us today</p>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mt-lg-n5">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
-                        <h4 class="text-white">Newsletter</h4>
-                        <h6 class="text-white">Subscribe Our Newsletter</h6>
-                        <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-                        <form action="">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                <button class="btn btn-primary">Sign Up</button>
-                            </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Shamba shape-up">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Youth Mentorship</h4>
+                            <span class="service-date">June 11, 2024</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Youth Mentorship</h3>
+                        <p class="service-description">we believe in nurturing the future of sustainable agriculture and
+                            recognize the immense potential of young mind. Our mentorship programs are always open.</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Incubation Service">
+                        <div class="service-overlay">
+                            <h4 class="service-title">After-sale Services</h4>
+                            <span class="service-date">July 01, 2024</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-egg"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">After-sale Services</h3>
+                        <p class="service-description">Specialized feed formulation for laying hens to maximize egg
+                            production and quality.</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="img/eyeinj.png" alt="Chicken House Advice">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Vaccination Service</h4>
+                            <span class="service-date">August 01, 2024</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Vaccination Service</h3>
+                        <p class="service-description">Our professional vaccination service offers a vital layer of
+                            protection for your chicks and growing birds, ensuring they have the best possible start and
+                            a robust defense against common poultry illnesses. .</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="img/africatalk.png" alt="Chicken House Plan">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Fish Services & Consultancy</h4>
+                            <span class="service-date">October 01, 2024</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Fish Services & Consultancy</h3>
+                        <p class="service-description">We believe that fish farming can be a powerful complement to
+                            poultry, creating a more balanced and productive farm.We guide you
+                            through every stagebe it developing or managing a successful fish pond
+                            or aquaponic system.</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="img/Egg incubator.png" alt="Disease Management">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Incubation Service</h4>
+                            <span class="service-date">Nov 01, 2024</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Incubation Service</h3>
+                        <p class="service-description">Whether you're a small-scale farmer looking to expand, an
+                            individual with a few valuable eggs, or a commercial breeder needing reliable hatching, our
+                            state-of-the-art incubation facility is equipped to deliver high hatch rates and healthy
+                            chicks.</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                            alt="Vaccination">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Poultry Consulting Services</h4>
+                            <span class="service-date">Jan 01, 2025</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Poultry Consulting Services</h3>
+                        <p class="service-description">Practical, Hands-On Experience: Our advice stems directly from
+                            years of successful poultry farming,
+                            We prioritize methods that are both economically viable and environmentally responsible.</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="img/an.Ivory-Coast-Poultry-Training.png" alt="Feed Schedule">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Delivered with care </h4>
+                            <span class="service-date">Jan 01, 2025</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Chicks & Feeds Delivering</h3>
+                        <p class="service-description">Eliminate the logistical challenges and save both time and
+                            resources. Our reliable delivery service brings SECOL POULTRY's trusted products directly to
+                            you, saving to the trouble.</p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-image">
+                        <img src="img/training-of-trainers.png" alt="Improved Feeds">
+                        <div class="service-overlay">
+                            <h4 class="service-title">Poultry Farmers Training</h4>
+                            <span class="service-date">Jan 01, 2025</span>
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">Poultry Farmers Training</h3>
+                        <p class="service-description">Our training focuses on proven, sustainable methods that lead to
+                            healthier flocks, plus productivity, and enhanced profitability. Whether you're looking to
+                            refine your existing projects, our programs provide invaluable
+                            insights and hands-on learning</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section (reuse your site-wide stats section) -->
+    <section class="stats">
+        <div class="container">
+            <div class="grid grid-4">
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="30">0</div>
+                    <div class="stat-label">Farm Specialists</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="200">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 10px;"></i>
+                        Iruma Keria , Tharaka-nithi
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-envelope" style="color: var(--secondary); margin-right: 10px;"></i>
+                        secolpoultry254@gmail.com
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-phone" style="color: var(--secondary); margin-right: 10px;"></i>
+                        +254758510206
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="service.html" class="footer-link">Our Services</a>
+                    <a href="team.html" class="footer-link">Meet The Team</a>
+                    <a href="blog.html" class="footer-link">Latest Blog</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <a href="#" class="footer-link">Organic Eggs</a>
+                    <a href="#" class="footer-link">Free Range Chicken</a>
+                    <a href="#" class="footer-link">Farm Consulting</a>
+                    <a href="#" class="footer-link">Sustainable Farming</a>
+                    <a href="#" class="footer-link">Farm Tours</a>
+                </div>
+                <div class="footer-section">
+                    <div class="newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to our newsletter for the latest updates and organic farming tips</p>
+                        <form class="newsletter-form"
+                            style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 20px;">
+                            <input type="email" class="newsletter-input" placeholder="Your Email" required
+                                style="width: 100%;">
+                            <button type="submit" class="newsletter-btn" style="width: 100%;">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <div class="footer-bottom">
+                &copy; 2025 SECOL POULTRY. All Rights Reserved.
+            </div>
         </div>
-    </div>
-    <div class="container-fluid bg-dark text-white py-4">
-        <div class="container text-center">
-            <p class="mb-0">&copy; <a class="text-secondary fw-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by <a class="text-secondary fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
-            <br>Distributed By: <a class="text-secondary fw-bold" href="https://github/steve-leo254" target="_blank">Muthure</a>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-secondary py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
+    </footer>
     <script src="js/main.js"></script>
 </body>
 

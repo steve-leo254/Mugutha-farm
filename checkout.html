@@ -1,491 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <title>FarmFresh - Checkout</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="organic farm, checkout, payment, FarmFresh">
-    <meta name="description" content="Complete your purchase of FarmFresh organic products.">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
-        rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary-color: #0d6efd;
-            --secondary-color: #6c757d;
-            --white: #ffffff;
-        }
-
-        .cart-table th,
-        .cart-table td {
-            vertical-align: middle;
-        }
-
-        .cart-table .quantity-input {
-            width: 60px;
-            text-align: center;
-        }
-
-        .btn-remove {
-            color: #dc3545;
-        }
-
-        .btn-remove:hover {
-            color: #b02a37;
-        }
-
-        .total-section {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .payment-form .form-control {
-            margin-bottom: 1rem;
-        }
-    </style>
+    <title>SECOL POULTRY - Checkout</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Organic Poultry Farm, Premium Eggs, Sustainable Farming" name="keywords">
+    <meta content="SECOL POULTRY - Leading organic poultry farm producing premium quality eggs and poultry products" name="description">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/about.css">
 </head>
-
 <body>
-    <!-- Topbar Start -->
-    <header class="container-fluid px-5 d-none d-lg-block">
-        <div class="row gx-5 py-3 align-items-center">
-            <div class="col-lg-3">
-                <div class="d-flex align-items-center justify-content-start">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-2"></i>
-                    <h2 class="mb-0">+012 345 6789</h2>
+    <!-- Header -->
+    <header class="header">
+        <div class="topbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span><i class="fas fa-phone"></i> +254758-510-206</span>
+                    <span><i class="fas fa-envelope"></i> secolpoultry254@gmail.com</span>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a href="index.html" class="navbar-brand ms-lg-5">
-                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">SECOL POULTRY</span></h1>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="d-flex align-items-center justify-content-end">
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#" aria-label="Twitter"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#" aria-label="Facebook"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2" href="#" aria-label="LinkedIn"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-primary btn-square rounded-circle me-2 position-relative" href="checkout.html"
-                        aria-label="View Cart">
-                        <i class="bi bi-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </a>
+                <div style="display: flex; gap: 10px;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
+        <nav class="navbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-egg"></i>
+                    SECOL POULTRY
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="service.html" class="nav-link">Services</a></li>
+                    <li><a href="product.html" class="nav-link">Products</a></li>
+                    <li><a href="checkout.html" class="nav-link active">Checkout</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
-    <!-- Topbar End -->
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
-        <a href="index.html" class="navbar-brand d-flex d-lg-none">
-            <h1 class="m-0 display-4 text-secondary"><span class="text-white">SECOL POULTRY</span></h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <a href="product.html" class="nav-item nav-link">Product</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="team.html" class="dropdown-item">The Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <!-- Hero Start -->
-    <section class="container-fluid bg-primary py-5 bg-hero mb-5">
-        <div class="container py-5">
-            <div class="row justify-content-start">
-                <div class="col-lg-8 text-center text-lg-start">
-                    <h1 class="display-1 text-white mb-md-4">Checkout</h1>
-                    <nav aria-label="breadcrumb">
-                        <a href="index.html" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                        <a href="product.html" class="btn btn-secondary py-md-3 px-md-5 me-3">Products</a>
-                        <a href="checkout.html" class="btn btn-secondary py-md-3 px-md-5">Checkout</a>
-                    </nav>
-                </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="font-display">Checkout</h1>
+                <p>Review your cart and complete your purchase securely with SECOL POULTRY.</p>
+                <a href="#checkout-section" class="btn-hero">
+                    Proceed to Checkout <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
-    <!-- Hero End -->
-
-    <!-- Checkout Start -->
-    <section class="container-fluid py-5">
+    <!-- Checkout Section -->
+    <section id="checkout-section" class="about" style="background: var(--gray-100);">
         <div class="container">
-            <div class="mx-auto text-center mb-5" style="max-width: 500px;">
-                <h6 class="text-primary text-uppercase">Checkout</h6>
-                <h1 class="display-5">Review Your Cart & Pay</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-8">
-                    <table class="table cart-table table-bordered">
+            <div class="grid grid-2" style="gap: 40px;">
+                <!-- Cart and Order Summary -->
+                <div>
+                    <h2 class="section-title font-display">Your Cart</h2>
+                    <table class="feature-item" style="width: 100%; background: white; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 30px;">
                         <thead>
                             <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Action</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="cartItems"></tbody>
                     </table>
-                    <div class="total-section text-end">
-                        <p>Total: Ksh <span id="cartTotal">0.00</span></p>
-                    </div>
-                    <a href="product.html" class="btn btn-primary py-2 px-4">Continue Shopping</a>
+                    <div class="stat-label" style="text-align: right; margin-bottom: 20px;">Total: Ksh <span id="cartTotal">0.00</span></div>
+                    <a href="product.html" class="btn-hero" style="padding: 10px 24px;">Continue Shopping</a>
                 </div>
-                <div class="col-lg-4">
-                    <div class="bg-light p-4 rounded">
-                        <h4>Payment Details</h4>
-                        <form id="paymentForm">
-                            <div class="mb-3">
-                                <label for="cardNumber" class="form-label">Card Number</label>
-                                <input type="text" class="form-control" id="cardNumber"
-                                    placeholder="1234 5678 9012 3456" pattern="\d{16}"
-                                    title="Enter a 16-digit card number">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="expiryDate" class="form-label">Expiry Date</label>
-                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY"
-                                        pattern="\d{2}/\d{2}" title="Enter expiry in MM/YY format">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="cvv" class="form-label">CVV</label>
-                                    <input type="text" class="form-control" id="cvv" placeholder="123" pattern="\d{3}"
-                                        title="Enter a 3-digit CVV">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="cardName" class="form-label">Name on Card</label>
-                                <input type="text" class="form-control" id="cardName" placeholder="John Doe">
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100 py-3 mb-3">Pay with Card</button>
+                <!-- Payment Details -->
+                <div>
+                    <div class="feature-item" style="background: white; border-radius: 16px; box-shadow: var(--shadow);">
+                        <h2 class="section-title font-display" style="font-size: 1.3rem;">Payment Details</h2>
+                        <form id="paymentForm" class="newsletter-form" style="flex-direction: column; gap: 15px; max-width: 400px;">
+                            <input type="text" class="newsletter-input" id="cardNumber" placeholder="Card Number" required>
+                            <input type="text" class="newsletter-input" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>
+                            <input type="text" class="newsletter-input" id="cvv" placeholder="CVV" required>
+                            <input type="text" class="newsletter-input" id="cardName" placeholder="Name on Card" required>
+                            <button type="submit" class="newsletter-btn">Pay with Card</button>
                         </form>
-                        <form id="mpesaForm">
-                            <div class="mb-3">
-                                <label for="phoneNumber" class="form-label">Phone Number (M-Pesa)</label>
-                                <input type="tel" class="form-control" id="phoneNumber" placeholder="e.g., 254712345678"
-                                    required pattern="254\d{9}"
-                                    title="Enter a valid Kenyan phone number starting with 254 followed by 9 digits">
-                            </div>
-                            <button type="submit" class="btn btn-success w-100 py-3">Pay with M-Pesa</button>
+                        <form id="mpesaForm" class="newsletter-form" style="flex-direction: column; gap: 15px; max-width: 400px; margin-top: 20px;">
+                            <input type="tel" class="newsletter-input" id="phoneNumber" placeholder="Phone Number (M-Pesa)" required>
+                            <button type="submit" class="newsletter-btn" style="background: #25d366; color: white;">Pay with M-Pesa</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Checkout End -->
-
-    <!-- Footer Start -->
-    <footer class="container-fluid bg-footer bg-primary text-white mt-5">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="row gx-5">
-                <div class="col-lg-8 col-md-6">
-                    <div class="row gx-5">
-                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                            <h4 class="text-white mb-4">Get In Touch</h4>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-geo-alt text-white me-2"></i>
-                                <p class="text-white mb-0">123 Street, New York, USA</p>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-envelope-open text-white me-2"></i>
-                                <p class="text-white mb-0">steveleo@gmail.com</p>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <i class="bi bi-telephone text-white me-2"></i>
-                                <p class="text-white mb-0">+254758510206</p>
-                            </div>
-                            <div class="d-flex mt-4">
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"
-                                    aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"
-                                    aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle me-2" href="#"
-                                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-secondary btn-square rounded-circle" href="#"
-                                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-white mb-2" href="index.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Home</a>
-                                <a class="text-white mb-2" href="about.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>About Us</a>
-                                <a class="text-white mb-2" href="service.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
-                                <a class="text-white mb-2" href="team.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
-                                <a class="text-white mb-2" href="blog.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
-                                <a class="text-white" href="contact.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                            <h4 class="text-white mb-4">Popular Links</h4>
-                            <div class="d-flex flex-column justify-content-start">
-                                <a class="text-white mb-2" href="index.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Home</a>
-                                <a class="text-white mb-2" href="about.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>About Us</a>
-                                <a class="text-white mb-2" href="service.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Our Services</a>
-                                <a class="text-white mb-2" href="team.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Meet The Team</a>
-                                <a class="text-white mb-2" href="blog.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Latest Blog</a>
-                                <a class="text-white" href="contact.html"><i
-                                        class="bi bi-arrow-right text-white me-2"></i>Contact Us</a>
-                            </div>
-                        </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 10px;"></i>
+                        Iruma Keria , Tharaka-nithi
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-envelope" style="color: var(--secondary); margin-right: 10px;"></i>
+                        steveleo@gmail.com
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-phone" style="color: var(--secondary); margin-right: 10px;"></i>
+                        +254758510206
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mt-lg-n5">
-                    <div
-                        class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
-                        <h4 class="text-white">Newsletter</h4>
-                        <h6 class="text-white">Subscribe Our Newsletter</h6>
-                        <p>Stay updated with our latest offers and news.</p>
-                        <form id="newsletter-form" action="/subscribe" method="POST">
-                            <div class="input-group">
-                                <input type="email" class="form-control border-white p-3" placeholder="Your Email"
-                                    required aria-label="Email Address">
-                                <button class="btn btn-primary" type="submit">Sign Up</button>
-                            </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="service.html" class="footer-link">Our Services</a>
+                    <a href="team.html" class="footer-link">Meet The Team</a>
+                    <a href="blog.html" class="footer-link">Latest Blog</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <a href="#" class="footer-link">Organic Eggs</a>
+                    <a href="#" class="footer-link">Free Range Chicken</a>
+                    <a href="#" class="footer-link">Fish Farming</a>
+                    <a href="#" class="footer-link">Farm Consulting</a>
+                    <a href="#" class="footer-link">Sustainable Farming</a>
+                    <a href="#" class="footer-link">Farm Tours</a>
+                </div>
+                <div class="footer-section">
+                    <div class="newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to our newsletter for the latest updates and organic farming tips</p>
+                        <form class="newsletter-form" style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 20px;">
+                            <input type="email" class="newsletter-input" placeholder="Your Email" required style="width: 100%;">
+                            <button type="submit" class="newsletter-btn" style="width: 100%;">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid bg-dark text-white py-4">
-            <div class="container text-center">
-                <p class="mb-0">© <a class="text-secondary fw-bold" href="#">FarmFresh</a>. All Rights Reserved.
-                    Designed by
-                    <a class="text-secondary fw-bold" href="https://htmlcodex.com">HTML Codex</a>
-                </p>
-                <br>Distributed By: <a class="text-secondary fw-bold" href="https://github/steve-leo254"
-                    target="_blank">Muthure</a>
+            <div class="footer-bottom">
+                &copy; 2025 SECOL POULTRY. All Rights Reserved.
             </div>
         </div>
     </footer>
-    <!-- Footer End -->
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-secondary py-3 fs-4 back-to-top" aria-label="Back to Top"><i
-            class="bi bi-arrow-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="lib/easing/easing.min.js" defer></script>
-    <script src="lib/counterup/counterup.min.js" defer></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <script src="node/node.js" defer></script>
-
-    <!-- Checkout Functionality -->
-    <script>
-        // Load cart from localStorage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Update cart count in topbar
-        function updateCartCount() {
-            const cartCount = document.getElementById('cartCount');
-            cartCount.textContent = cart.reduce((sum, item) => {
-                return item && typeof item.quantity === 'number' ? sum + item.quantity : sum;
-            }, 0);
-        }
-
-        // Calculate and update total
-        function updateCartTotal() {
-            const total = cart.reduce((sum, item) => {
-                if (item && typeof item.price === 'number' && typeof item.quantity === 'number') {
-                    return sum + item.price * item.quantity;
-                }
-                return sum;
-            }, 0).toFixed(2);
-            document.getElementById('cartTotal').textContent = total;
-            return total;
-        }
-
-        // Render cart items
-        function renderCart() {
-            const cartItems = document.getElementById('cartItems');
-            cartItems.innerHTML = '';
-
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<tr><td colspan="5" class="text-center">Your cart is empty. <a href="product.html">Shop now!</a></td></tr>';
-                updateCartTotal();
-                return;
-            }
-
-            cart.forEach((item, index) => {
-                if (!item || typeof item.price !== 'number' || typeof item.quantity !== 'number') {
-                    console.error('Invalid cart item:', item);
-                    return;
-                }
-
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.name}</td>
-                    <td>Ksh ${item.price.toFixed(2)}</td>
-                    <td>
-                        <input type="number" class="form-control quantity-input" min="1" value="${item.quantity}" data-index="${index}">
-                    </td>
-                    <td>Ksh ${(item.price * item.quantity).toFixed(2)}</td>
-                    <td>
-                        <button class="btn btn-link btn-remove" data-index="${index}" aria-label="Remove ${item.name} from cart">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                `;
-                cartItems.appendChild(row);
-            });
-
-            updateCartTotal();
-        }
-
-        // Update quantity
-        function updateQuantity(index, newQuantity) {
-            if (newQuantity < 1) newQuantity = 1;
-            cart[index].quantity = parseInt(newQuantity);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            updateCartCount();
-        }
-
-        // Remove item from cart
-        function removeItem(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            updateCartCount();
-        }
-
-        // Event delegation for quantity changes and removals
-        document.getElementById('cartItems').addEventListener('input', (e) => {
-            if (e.target.classList.contains('quantity-input')) {
-                const index = e.target.dataset.index;
-                const newQuantity = e.target.value;
-                updateQuantity(index, newQuantity);
-            }
-        });
-
-        document.getElementById('cartItems').addEventListener('click', (e) => {
-            if (e.target.closest('.btn-remove')) {
-                const index = e.target.closest('.btn-remove').dataset.index;
-                removeItem(index);
-            }
-        });
-
-        // Card payment form submission (client-side simulation)
-        document.getElementById('paymentForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (cart.length === 0) {
-                alert('Your cart is empty! Please add items to proceed.');
-                return;
-            }
-
-            const total = updateCartTotal();
-            alert(`Card payment of Ksh ${total} processed successfully! Thank you for your purchase.`);
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-            updateCartCount();
-            e.target.reset();
-        });
-
-        // M-Pesa payment form submission
-        document.getElementById('mpesaForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            if (cart.length === 0) {
-                alert('Your cart is empty! Please add items to proceed.');
-                return;
-            }
-
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            const total = updateCartTotal();
-
-            try {
-                const response = await fetch('/mpesa/stkpush', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        phoneNumber: phoneNumber,
-                        amount: total
-                    })
-                });
-
-                const result = await response.json();
-                if (response.ok) {
-                    alert('M-Pesa STK Push initiated. Please check your phone to complete the payment.');
-                    // Optionally poll for payment confirmation here
-                    cart = [];
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    renderCart();
-                    updateCartCount();
-                    e.target.reset();
-                } else {
-                    alert(`M-Pesa payment failed: ${result.errorMessage || 'Unknown error'}`);
-                }
-            } catch (error) {
-                console.error('Error initiating M-Pesa payment:', error);
-                alert('Network error. Please try again later.');
-            }
-        });
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCart();
-            updateCartCount();
-        });
-    </script>
+    <!-- Checkout Functionality JS (reuse your previous script or link to external file) -->
+    <script src="js/main.js"></script>
 </body>
-
 </html>
