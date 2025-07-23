@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <title>SECOL POULTRY - Our Products</title>
+    <title>SECOL POULTRY </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Organic Poultry Farm, Premium Eggs, Sustainable Farming" name="keywords">
-    <meta content="SECOL POULTRY - Leading organic poultry farm producing premium quality eggs and poultry products" name="description">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta content="SECOL POULTRY - Leading organic poultry farm producing premium quality eggs and poultry products"
+        name="description">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/about.css">
+
+    <style>
+        /* Quick inline styles for cart functionality */
+        .cart-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            max-width: 300px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .cart-notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .cart-notification.success {
+            background-color: #28a745;
+        }
+
+        .cart-notification.error {
+            background-color: #dc3545;
+        }
+
+        .cart-notification.info {
+            background-color: #17a2b8;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        #cart-count {
+            animation: bounce 0.3s ease-in-out;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -35,16 +97,18 @@
                 </a>
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link ">Products</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="service.html" class="nav-link">Services</a></li>
-                    <li><a href="product.html" class="nav-link active">Products</a></li>
                     <li><a href="team.html" class="nav-link">Team</a></li>
+                    <li><a href="blog.html" class="nav-link">blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="cart-container" style="position: relative; margin-left: 18px;">
                     <a href="checkout.html" class="cart-link" style="color: var(--primary); font-size: 1.6rem;">
                         <i class="fas fa-shopping-cart"></i>
-                        <span id="cart-count" style="position: absolute; top: -8px; right: -12px; background: var(--secondary); color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 0.85rem; font-weight: bold; display: none;">0</span>
+                        <span id="cart-count"
+                            style="position: absolute; top: -8px; right: -12px; background: var(--secondary); color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 0.85rem; font-weight: bold; display: none;">0</span>
                     </a>
                 </div>
             </div>
@@ -56,7 +120,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="font-display">Our Products</h1>
-                <p>Explore our premium range of organic poultry products, including eggs, chicks, and more. Quality and sustainability guaranteed.</p>
+                <p>We take immense pride in cultivating and delivering a premium range of poultry products that
+                    embody our core values of quality, sustainability, and uncompromising animal welfare. Located in the
+                    fertile heart of Meru, Kenya, our products are a testament to our commitment to natural farming
+                    practices and your family's health</p>
                 <a href="#products" class="btn-hero">
                     View Products <i class="fas fa-arrow-right"></i>
                 </a>
@@ -73,93 +140,104 @@
             </div>
             <div class="grid grid-4">
                 <div class="feature-item product-card">
-                    <img src="img/jogoo.jpg" alt="Kuku Kienyeji" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <img src="img/jogoo.jpg" alt="Kuku Kienyeji"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Kuku Kienyeji</h4>
-                    
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 1200.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Kuku Kienyeji" data-price="1200">Add to Cart</button>
+                    <button class="newsletter-btn add-to-cart" data-name="Kuku Kienyeji" data-price="1200"
+                        data-image="img/jogoo.jpg">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/chickfeeds.jpg" alt="Kuku Feeds" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Kuku Feeds</h4>
-                    
-                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 2200.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Kuku Feeds" data-price="2200">Add to Cart</button>
+                    <img src="img/poulty-feeder.png" alt="Kuku Feeds"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Kuku Feeder</h4>
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 1400.00</div>
+                    <button class="newsletter-btn add-to-cart" data-name="Kuku Feeder" data-price="1400"
+                        data-image="img/poulty-feeder.png">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/egg-png-ima.png" alt="Eggs" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <img src="img/egg-png-ima.png" alt="Eggs"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                     <h4>Improved Egg</h4>
-                   
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 30.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Eggs" data-price="20">Add to Cart</button>
+                    <button class="newsletter-btn add-to-cart" data-name="Improved Egg" data-price="30"
+                        data-image="img/egg-png-ima.png">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/chicksM.jpg" alt="Kienyeji Chickens" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Kienyeji Chicks</h4>
-                    
-                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 350.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Kienyeji Chickens" data-price="350">Add to Cart</button>
+                    <img src="img/kienyeji-full.png" alt="Kienyeji Chickens"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Kienyeji Full</h4>
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 900.00</div>
+                    <button class="newsletter-btn add-to-cart" data-name="Kienyeji Full" data-price="900"
+                        data-image="img/kienyeji-full.png">Add to Cart</button>
                 </div>
             </div>
             <!-- Related Products Row -->
             <div style="margin-top: 40px;">
-                <!-- <h3 class="section-title font-display" style="text-align:center; margin-bottom: 30px;">Related Products</h3> -->
                 <div class="grid grid-4">
                     <div class="feature-item product-card">
-                        <img src="img/poultry-chick-crumbs-coccidiosta.png" alt="Organic Feed" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Strater Crumbs</h4>
-                        
+                        <img src="img/poultry-chick-crumbs-coccidiosta.png" alt="Organic Feed"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Starter Crumbs 50Kgs</h4>
                         <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 5000.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Organic Feed" data-price="800">Add to Cart</button>
+                        <button class="newsletter-btn add-to-cart" data-name="Starter Crumbs 50Kgs" data-price="5000"
+                            data-image="img/poultry-chick-crumbs-coccidiosta.png">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
-                        <img src="img/broiler-starter-mash-feed-500x50.png" alt="Vaccinated Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Finisher Mash</h4>
-                        
+                        <img src="img/broiler-starter-mash-feed-500x50.png" alt="Vaccinated Chicks"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Finisher Mash 50Kgs</h4>
                         <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 4500.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Vaccinated Chicks" data-price="150">Add to Cart</button>
+                        <button class="newsletter-btn add-to-cart" data-name="Finisher Mash 50Kgs" data-price="4500"
+                            data-image="img/broiler-starter-mash-feed-500x50.png">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
-                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Kienyeji Eggs</h4>
-                        
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
+                        <img src="img/kienyeji-tray.png" alt="Farm Tools"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Kienyeji Tray</h4>
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 900.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Kienyeji Tray" data-price="900"
+                            data-image="img/kienyeji-tray.png">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
-                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <img src="img/soy_free_layer_feed-1.png" alt="Farm Tools"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Layer Mash 50kgs</h4>
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 5000.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Layer Mash 50kgs" data-price="5000"
+                            data-image="img/soy_free_layer_feed-1.png">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/chicken-mash-feed-500x500.png" alt="Farm Tools"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Chick Mash 50Kgs</h4>
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 4900.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Chick Mash 50Kgs" data-price="4900"
+                            data-image="img/chicken-mash-feed-500x500.png">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/Chick-Starter-Regular-Mash-600x6.png" alt="Farm Tools"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <h4>Starter Mash 50Kgs</h4>
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 4600.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Starter Mash 50Kgs" data-price="4600"
+                            data-image="img/Chick-Starter-Regular-Mash-600x6.png">Add to Cart</button>
+                    </div>
+                    <div class="feature-item product-card">
+                        <img src="img/6-PACKED-EGGS.png" alt="Farm Tools"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                         <h4>Improved 6pck Eggs</h4>
-                        
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 150.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Improved 6pck Eggs" data-price="150"
+                            data-image="img/6-PACKED-EGGS.png">Add to Cart</button>
                     </div>
                     <div class="feature-item product-card">
-                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Improved 6pck Eggs</h4>
-                        
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
-                    </div>
-                    <div class="feature-item product-card">
-                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Improved 6pck Eggs</h4>
-                        
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
-                    </div>
-                    <div class="feature-item product-card">
-                        <img src="img/feature.png" alt="Farm Tools" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                        <h4>Improved 6pck Eggs</h4>
-                        
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 500.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Farm Tools" data-price="500">Add to Cart</button>
-                    </div>
-                    <div class="feature-item product-card">
-                        <img src="img/eegggss3334.jpg" alt="Egg Trays" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                        <img src="img/eegggss3334.jpg" alt="Egg Trays"
+                            style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
                         <h4>Egg Trays</h4>
-                        
-                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 100.00</div>
-                        <button class="newsletter-btn add-to-cart" data-name="Egg Trays" data-price="100">Add to Cart</button>
+                        <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 450.00</div>
+                        <button class="newsletter-btn add-to-cart" data-name="Egg Trays" data-price="450"
+                            data-image="img/eegggss3334.jpg">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -175,32 +253,36 @@
             </div>
             <div class="grid grid-4">
                 <div class="feature-item product-card">
-                    <img src="img/product-1.png" alt="Broiler Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Broiler Chicks</h4>
-                   
-                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 100.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Broiler Chicks" data-price="100">Add to Cart</button>
+                    <img src="img/HN-103broil-chick.png" alt="Broiler Chicks"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Broiler Chick</h4>
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 150.00</div>
+                    <button class="newsletter-btn add-to-cart" data-name="Broiler Chick" data-price="150"
+                        data-image="img/HN-103broil-chick.png">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/product-2.png" alt="Layer Chicks" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Layer Chicks</h4>
-                    
-                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 120.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Layer Chicks" data-price="120">Add to Cart</button>
+                    <img src="img/layerchic.png" alt="Layer Chicks"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Layer Chick</h4>
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 200.00</div>
+                    <button class="newsletter-btn add-to-cart" data-name="Layer Chick" data-price="200"
+                        data-image="img/layerchic.png">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/chicksM2.png" alt="Improved Kienyeji" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Improved Kienyeji</h4>
-                   
+                    <img src="img/improvedchikens-1.png" alt="Improved Kienyeji"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Improved Kienyeji Chick</h4>
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 999.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Improved Kienyeji" data-price="999">Add to Cart</button>
+                    <button class="newsletter-btn add-to-cart" data-name="Improved Kienyeji Chick" data-price="999"
+                        data-image="img/improvedchikens-1.png">Add to Cart</button>
                 </div>
                 <div class="feature-item product-card">
-                    <img src="img/hen.png" alt="Parent Stock" style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
-                    <h4>Parent Stock</h4>
-                    
+                    <img src="img/Hatching-Kienyeji-chicks-can-be.png" alt="Parent Stock"
+                        style="width:100%; height:200px; object-fit:cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h4>Kienyeji Chick</h4>
                     <div style="font-weight: bold; color: var(--primary); margin-bottom: 10px;">Ksh 2500.00</div>
-                    <button class="newsletter-btn add-to-cart" data-name="Parent Stock" data-price="2500">Add to Cart</button>
+                    <button class="newsletter-btn add-to-cart" data-name="Kienyeji Chick" data-price="2500"
+                        data-image="img/Hatching-Kienyeji-chicks-can-be.png">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -214,7 +296,8 @@
                     <h4>Get In Touch</h4>
                     <div style="margin-bottom: 15px;">
                         <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 10px;"></i>
-                        Iruma Keria , Tharaka-nithi    </div>
+                        Iruma Keria , Tharaka-nithi
+                    </div>
                     <div style="margin-bottom: 15px;">
                         <i class="fas fa-envelope" style="color: var(--secondary); margin-right: 10px;"></i>
                         steveleo@gmail.com
@@ -222,12 +305,6 @@
                     <div style="margin-bottom: 15px;">
                         <i class="fas fa-phone" style="color: var(--secondary); margin-right: 10px;"></i>
                         +254758510206
-                    </div>
-                    <div style="margin-top: 20px;">
-                        <a href="#" class="social-link" style="margin-right: 10px;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" style="margin-right: 10px;"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" style="margin-right: 10px;"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -252,8 +329,10 @@
                     <div class="newsletter">
                         <h4>Newsletter</h4>
                         <p>Subscribe to our newsletter for the latest updates and organic farming tips</p>
-                        <form class="newsletter-form" style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 20px;">
-                            <input type="email" class="newsletter-input" placeholder="Your Email" required style="width: 100%;">
+                        <form class="newsletter-form"
+                            style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 20px;">
+                            <input type="email" class="newsletter-input" placeholder="Your Email" required
+                                style="width: 100%;">
                             <button type="submit" class="newsletter-btn" style="width: 100%;">Subscribe</button>
                         </form>
                     </div>
@@ -265,17 +344,205 @@
         </div>
     </footer>
 
-    <!-- Cart Modal -->
-    <div id="cartModal" class="cart-modal">
-      <div class="cart-modal-content">
-        <span class="cart-modal-close" id="closeCartModal">&times;</span>
-        <h3 style="margin-bottom: 18px;">Your Cart</h3>
-        <div id="cartModalItems"></div>
-        <div id="cartModalTotal" style="margin-top: 18px; font-weight: bold;"></div>
-        <a href="checkout.html" class="newsletter-btn" style="margin-top: 18px; display: inline-block;">Go to Checkout</a>
-      </div>
-    </div>
+    <script>
+        // Enhanced Cart System for SECOL POULTRY - Fixed Version
+        (function () {
+            'use strict';
 
-    <script src="js/main.js"></script>
+            // In-memory cart storage
+            let cartData = [];
+
+            // Storage helper functions
+            const CartStorage = {
+                get: function () {
+                    return cartData;
+                },
+                set: function (cart) {
+                    cartData = cart;
+                    return true;
+                },
+                clear: function () {
+                    cartData = [];
+                }
+            };
+
+            // Add to Cart function
+            function addToCart(event) {
+                event.preventDefault();
+
+                const btn = event.target.closest('.add-to-cart');
+                if (!btn) {
+                    console.warn('[Cart] Add to cart button not found');
+                    return;
+                }
+
+                // Get product details from data attributes
+                const name = btn.getAttribute('data-name');
+                const priceStr = btn.getAttribute('data-price');
+                const image = btn.getAttribute('data-image') || 'img/product-default.png';
+
+                if (!name || !priceStr) {
+                    console.warn('[Cart] Missing product data:', { name, price: priceStr });
+                    showNotification('Error: Product information is missing', 'error');
+                    return;
+                }
+
+                const price = parseFloat(priceStr);
+                if (isNaN(price) || price <= 0) {
+                    console.warn('[Cart] Invalid price:', priceStr);
+                    showNotification('Error: Invalid product price', 'error');
+                    return;
+                }
+
+                let cart = CartStorage.get();
+                const existingIndex = cart.findIndex(item => item.name === name);
+
+                if (existingIndex !== -1) {
+                    cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+                } else {
+                    cart.push({
+                        name,
+                        price,
+                        quantity: 1,
+                        image: image,
+                        id: Date.now() + Math.random()
+                    });
+                }
+
+                if (CartStorage.set(cart)) {
+                    console.log('[Cart] Added:', { name, price, quantity: 1 }, 'Current cart:', cart);
+                    showNotification(`${name} added to cart!`, 'success');
+                    updateCartCount();
+
+                    // Add visual feedback to button
+                    btn.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        btn.style.transform = '';
+                    }, 150);
+                } else {
+                    showNotification('Error: Could not add item to cart', 'error');
+                }
+            }
+
+            // Update Cart Count Badge
+            function updateCartCount() {
+                const cart = CartStorage.get();
+                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                const badge = document.getElementById('cart-count');
+
+                if (badge) {
+                    badge.textContent = count;
+                    badge.style.display = count > 0 ? 'inline-block' : 'none';
+
+                    // Add bounce animation
+                    badge.style.animation = 'none';
+                    setTimeout(() => {
+                        badge.style.animation = '';
+                    }, 10);
+                }
+
+                console.log('[Cart] Count updated:', count);
+                return count;
+            }
+
+            // Show notification
+            function showNotification(message, type = 'info') {
+                // Remove existing notification
+                const existingNotification = document.querySelector('.cart-notification');
+                if (existingNotification) {
+                    existingNotification.remove();
+                }
+
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `cart-notification ${type}`;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+
+                // Show notification
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }, 3000);
+            }
+
+            // Clear cart function
+            function clearCart() {
+                CartStorage.clear();
+                updateCartCount();
+                showNotification('Cart cleared', 'info');
+            }
+
+            // Initialize when DOM is ready
+            function initializeCart() {
+                // Event delegation for add to cart buttons
+                document.body.addEventListener('click', function (e) {
+                    if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                        addToCart(e);
+                    }
+                });
+
+                // Cart icon click handler
+                const cartIcon = document.querySelector('.cart-link');
+                if (cartIcon) {
+                    cartIcon.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const cart = CartStorage.get();
+                        if (cart.length === 0) {
+                            showNotification('Your cart is empty', 'info');
+                        } else {
+                            showNotification(`You have ${cart.length} different items in your cart`, 'info');
+                            // Navigate to checkout page
+                            setTimeout(() => {
+                                window.location.href = 'checkout.html';
+                            }, 1000); // Delay to allow notification to be seen
+                        }
+                    });
+                }
+
+                // Initial cart count update
+                updateCartCount();
+
+                console.log('[Cart] System initialized successfully');
+            }
+
+            // Initialize when DOM is loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeCart);
+            } else {
+                initializeCart();
+            }
+
+            // Make functions available globally for debugging
+            window.CartDebug = {
+                getCart: () => CartStorage.get(),
+                clearCart: clearCart,
+                addTestItem: () => {
+                    const cart = CartStorage.get();
+                    cart.push({
+                        name: 'Test Item',
+                        price: 100,
+                        quantity: 1,
+                        image: 'img/test.jpg',
+                        id: Date.now()
+                    });
+                    CartStorage.set(cart);
+                    updateCartCount();
+                    showNotification('Test item added', 'success');
+                }
+            };
+
+        })();
+    </script>
 </body>
+
 </html>

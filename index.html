@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SECOL POULTRY - Premium Organic Farming</title>
+    <title>SECOL POULTRY </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Organic Poultry Farm, Premium Eggs, Sustainable Farming" name="keywords">
     <meta content="SECOL POULTRY - Leading organic poultry farm producing premium quality eggs and poultry products"
@@ -13,6 +13,45 @@
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/about.css">
+    <style>
+        .about-main-img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+            margin-bottom: 18px;
+            object-fit: cover;
+        }
+
+        .about-gallery-row {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .about-gallery-img {
+            flex: 0 0 48%;
+            width: 48%;
+            max-width: 48%;
+            height: 200px;
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            object-fit: cover;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 700px) {
+            .about-gallery-row {
+                flex-direction: column;
+            }
+
+            .about-gallery-img {
+                margin-bottom: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -39,13 +78,21 @@
                     SECOL POULTRY
                 </a>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link ">Products</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="service.html" class="nav-link">Services</a></li>
-                    <li><a href="product.html" class="nav-link">Products</a></li>
-                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="team.html" class="nav-link">Team</a></li>
+                    <li><a href="blog.html" class="nav-link">blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
+                <div class="cart-container" style="position: relative; margin-left: 18px;">
+                    <a href="checkout.html" class="cart-link" style="color: var(--primary); font-size: 1.6rem;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count"
+                            style="position: absolute; top: -8px; right: -12px; background: var(--secondary); color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 0.85rem; font-weight: bold; display: none;">0</span>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -59,7 +106,7 @@
                     right here in the heart of Tharaka-nithi County, Kenya. We are more than just a farm; we are a
                     promise – a
                     promise of unparalleled quality, unwavering commitment to animal welfare, and a deep-seated
-                    dedication to sustainable agriculture that nurtures both our planet and your family's health. .</p>
+                    dedication to sustainable agriculture that nurtures both our planet and your family's health.</p>
                 <a href="#about" class="btn-hero">
                     Learn More <i class="fas fa-arrow-right"></i>
                 </a>
@@ -71,17 +118,32 @@
     <section id="about" class="about">
         <div class="container">
             <div class="grid grid-2">
-                <div class="about-image fade-in">
-                    <img src="img/poultry.png" alt="Organic Farm">
+                <div class="about-image fade-in"
+                    style="box-shadow: none; background: none; padding: 0; display: flex; flex-direction: column; align-items: center;">
+                    <img src="img/alison_courseware_intro_5160.png" alt="Fish Farming at SECOL Poultry"
+                        class="about-main-img">
+                    <div class="about-gallery-row">
+                        <img src="img/fishfaming.png" alt="Eggs About" class="about-gallery-img">
+                        <img src="img/Kenya_tropics_fish_farm-1.png" alt="Eggs in Paper About" class="about-gallery-img">
+                    </div>
                 </div>
                 <div class="about-content fade-in">
-                    <p class="section-subtitle">About SECOL</p>
-                    <h2 class="section-title font-display">Your Trusted Organic Poultry Partner</h2>
-                    <p>SECOL Poultry is dedicated to providing the highest quality organic poultry products. Our farm
-                        uses sustainable practices to ensure healthy, nutritious, and delicious eggs and poultry for
-                        your family.</p>
-                    <p>We blend traditional farming wisdom with modern techniques, always putting animal welfare and
-                        environmental responsibility first.</p>
+                    <p class="section-subtitle"> SECOL</p>
+                    <h2 class="section-title font-display">Organic Wholesomeness, From Our Kenyan Soil to Your Family
+                    </h2>
+                    <p>Nestled in the pristine heart of Mt. Kenya's vibrant environs, SECOL POULTRY is more than just a
+                        farm – it's a living testament to our unwavering passion for sustainable agriculture and the
+                        profound respect we hold for both our precious environment and the animals in our care. Our
+                        foundational commitment to certified organic methods ensures that every single product we offer
+                        meets the absolute highest standards of quality, purity, and nutrition for your family.</p>
+                    <p>With years of experience in organic poultry farming, we combine traditional farming wisdom with
+                        modern sustainable techniques to deliver exceptional products while maintaining our
+                        responsibility to the environment.</p>
+                    <p>Building on our holistic vision, we are thrilled to announce our recent expansion into
+                        sustainable fish farming. Utilizing modern, eco-friendly fishponds, we are now providing
+                        fresh, high-quality fish to our community. This exciting new venture reflects our continuous
+                        commitment to integrated agriculture, diversifying healthy food options, and strengthening food
+                        security across the region.</p>
                     <div class="feature-grid">
                         <div class="feature-item">
                             <i class="fas fa-seedling"></i>
@@ -90,7 +152,7 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-award"></i>
-                            <h4>Award Winning</h4>
+                            <h4>We Care</h4>
                             <p>Recognized for excellence in sustainable farming and quality products</p>
                         </div>
                     </div>
@@ -104,19 +166,19 @@
         <div class="container">
             <div class="grid grid-4">
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-number" data-target="10">5</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-target="30">0</div>
+                    <div class="stat-number" data-target="30">78</div>
                     <div class="stat-label">Farm Specialists</div>
                 </div>
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-target="200">0</div>
+                    <div class="stat-number" data-target="200">150</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-number" data-target="500">170</div>
                     <div class="stat-label">Happy Clients</div>
                 </div>
             </div>
@@ -133,11 +195,11 @@
             <div class="grid grid-3">
                 <div class="team-card fade-in">
                     <div class="team-image">
-                        <img src="img/mama.png" alt="Secondina Kanini, Director">
+                        <img src="img/mama.png" alt="Secondina Kanini, Director & C.E.O">
                     </div>
                     <div class="team-info">
                         <h4 class="team-name">Secondina Kanini</h4>
-                        <p class="team-role">Director</p>
+                        <p class="team-role">Director & C.E.O</p>
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -148,10 +210,10 @@
                 </div>
                 <div class="team-card fade-in">
                     <div class="team-image">
-                        <img src="img/team-2.jpg" alt="Michael Chen, Poultry Specialist">
+                        <img src="img/smiling-3d-cartoon-man-avatar_97.png" alt="Steve Leo, Poultry Specialist">
                     </div>
                     <div class="team-info">
-                        <h4 class="team-name">Michael Chen</h4>
+                        <h4 class="team-name">Steve Leo</h4>
                         <p class="team-role">Poultry Specialist</p>
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -163,10 +225,10 @@
                 </div>
                 <div class="team-card fade-in">
                     <div class="team-image">
-                        <img src="img/team-3.jpg" alt="Emily Rodriguez, Quality Manager">
+                        <img src="img/makena.png" alt="Stellah Mukami, Quality Manager">
                     </div>
                     <div class="team-info">
-                        <h4 class="team-name">Emily Rodriguez</h4>
+                        <h4 class="team-name">Stellah Mukami</h4>
                         <p class="team-role">Quality Manager</p>
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
