@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SECOL POULTRY - Place Order</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Organic Poultry Farm, Premium Eggs, Sustainable Farming" name="keywords">
+    <meta content="SECOL POULTRY - Complete your order for premium quality eggs and poultry products"
+        name="description">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="icon" href="img/hen.png">
+
+    <style>
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10000;
+            max-width: 350px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #dc3545, #fd7e14);
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, #17a2b8, #6f42c1);
+        }
+
+        /* Order form styling */
+        .order-form {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(106, 179, 61, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Order summary styling */
+        .order-summary {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            padding-top: 20px;
+            border-top: 2px solid var(--primary);
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-price {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .item-quantity {
+            background: var(--gray-100);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Payment method selection */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary);
+        }
+
+        .payment-option.selected {
+            border-color: var(--primary);
+            background: rgba(106, 179, 61, 0.05);
+        }
+
+        .payment-option i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .payment-option h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Order success animation */
+        .success-animation {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3rem;
+            color: var(--primary);
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn-disabled {
+            opacity: 0.6;
+            cursor: not-allowed !important;
+            pointer-events: none;
+        }
+
+        /* Delivery options */
+        .delivery-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .delivery-option {
+            flex: 1;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            background: white;
+        }
+
+        .delivery-option:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .delivery-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(40, 167, 69, 0.05);
+        }
+
+        .delivery-icon {
+            font-size: 24px;
+            color: var(--primary);
+            background: rgba(40, 167, 69, 0.1);
+            padding: 12px;
+            border-radius: 50%;
+        }
+
+        .delivery-content {
+            flex: 1;
+        }
+
+        .delivery-option h5 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .delivery-option p {
+            margin: 0 0 5px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .delivery-price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .check-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .delivery-option.selected .check-icon {
+            opacity: 1;
+        }
+
+        #deliveryAddress {
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            display: none;
+        }
+
+        #deliveryAddress[style*="display: block"] {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="topbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span><i class="fas fa-phone"></i> +254758-510-206</span>
+                    <span><i class="fas fa-envelope"></i> secolpoultry254@gmail.com</span>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="index.html" class="navbar-brand">
+                    <i class="fas fa-egg"></i>
+                    SECOL POULTRY
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product.html" class="nav-link">Products</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="service.html" class="nav-link">Services</a></li>
+                    <li><a href="team.html" class="nav-link">Team</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="cart-container" style="position: relative; margin-left: 18px;">
+                    <a href="checkout.html" class="cart-link" style="color: var(--primary); font-size: 1.6rem;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count"
+                            style="position: absolute; top: -8px; right: -12px; background: var(--secondary); color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 0.85rem; font-weight: bold; display: none;">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="font-display">Complete Your Order</h1>
+                <p>Just a few more details and your fresh, organic products will be on their way!</p>
+                <div style="display: flex; align-items: center; gap: 20px; justify-content: center; margin-top: 20px;">
+                    <div style="display: flex; align-items: center; gap: 8px; color: #28a745;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cart Review</span>
+                    </div>
+                    <div style="width: 30px; height: 2px; background: #28a745;"></div>
+                    <div style="display: flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 600;">
+                        <i class="fas fa-circle" style="font-size: 0.8rem;"></i>
+                        <span>Order Details</span>
+                    </div>
+                    <div style="width: 30px; height: 2px; background: #ddd;"></div>
+                    <div style="display: flex; align-items: center; gap: 8px; color: #666;">
+                        <i class="far fa-circle" style="font-size: 0.8rem;"></i>
+                        <span>Confirmation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order-section" class="about" style="background: var(--gray-100);">
+        <div class="container">
+            <div class="grid grid-2" style="gap: 40px; align-items: start;">
+                <!-- Order Form -->
+                <div>
+                    <div class="order-form">
+                        <h2 class="section-title font-display" style="margin-bottom: 30px;">
+                            <i class="fas fa-user-circle" style="margin-right: 10px; color: var(--primary);"></i>
+                            Customer Information
+                        </h2>
+                        <form id="orderForm">
+                            <div class="form-row-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="fullName">Full Name *</label>
+                                    <input type="text" id="fullName" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email Address *</label>
+                                    <input type="email" id="email" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="altPhone">Alternative Phone</label>
+                                    <input type="tel" id="altPhone" class="form-input">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="order-form">
+                        <h2 class="section-title font-display" style="margin-bottom: 30px;">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--primary);"></i>
+                            Delivery Information
+                        </h2>
+
+                        <div class="form-group">
+                            <label class="form-label">Delivery Option *</label>
+                            <div class="delivery-options">
+                                <div class="delivery-option" data-delivery="pickup">
+                                    <i class="fas fa-store-alt delivery-icon"></i>
+                                    <div class="delivery-content">
+                                        <h5>Farm Pickup</h5>
+                                        <p>Collect from our farm</p>
+                                        <div class="delivery-price">Free</div>
+                                    </div>
+                                    <i class="fas fa-check-circle check-icon"></i>
+                                </div>
+                                <div class="delivery-option selected" data-delivery="delivery">
+                                    <i class="fas fa-truck delivery-icon"></i>
+                                    <div class="delivery-content">
+                                        <h5>Home Delivery</h5>
+                                        <p>We deliver to your location</p>
+                                        <div class="delivery-price">Ksh 200</div>
+                                    </div>
+                                    <i class="fas fa-check-circle check-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="deliveryAddress">
+                            <div class="form-group">
+                                <label class="form-label" for="address">Delivery Address *</label>
+                                <textarea id="address" class="form-input form-textarea"
+                                    placeholder="Enter your full delivery address..." required></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="city">City/Town *</label>
+                                    <input type="text" id="city" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="county">County *</label>
+                                    <input type="text" id="county" class="form-input" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="notes">Special Instructions</label>
+                            <textarea id="notes" class="form-input form-textarea"
+                                placeholder="Any special delivery instructions or notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="order-form">
+                        <h2 class="section-title font-display" style="margin-bottom: 30px;">
+                            <i class="fas fa-credit-card" style="margin-right: 10px; color: var(--primary);"></i>
+                            Payment Method
+                        </h2>
+
+                        <div class="payment-methods">
+                            <div class="payment-option selected" data-payment="mpesa">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h4>M-Pesa</h4>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">Pay with M-Pesa</p>
+                            </div>
+                            <div class="payment-option" data-payment="cod">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <h4>Cash on Delivery</h4>
+                                <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">Pay when you receive</p>
+                            </div>
+                        </div>
+
+                        <div id="mpesaDetails">
+                            <div class="form-group">
+                                <label class="form-label" for="mpesaPhone">M-Pesa Phone Number *</label>
+                                <input type="tel" id="mpesaPhone" class="form-input" placeholder="254XXXXXXXXX">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div>
+                    <div class="order-summary">
+                        <h3 class="section-title font-display" style="margin-bottom: 25px;">Order Summary</h3>
+
+                        <div id="orderItems">
+                            <!-- Order items will be populated here -->
+                        </div>
+
+                        <div style="margin: 20px 0;">
+                            <div class="summary-item">
+                                <span>Subtotal:</span>
+                                <span id="subtotalAmount">Ksh 0.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Delivery Fee:</span>
+                                <span id="deliveryFee">Ksh 200.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span><strong>Total Amount:</strong></span>
+                                <span id="totalAmount"><strong>Ksh 0.00</strong></span>
+                            </div>
+                        </div>
+
+                        <button id="placeOrderBtn" class="newsletter-btn"
+                            style="width: 100%; margin-top: 20px; padding: 15px; font-size: 1.1rem;">
+                            <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                            Place Order
+                        </button>
+
+                        <div style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                            <i class="fas fa-shield-alt" style="color: var(--primary); margin-right: 5px;"></i>
+                            Secure checkout protected by SSL
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Success Modal -->
+    <div id="successModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center;">
+        <div
+            style="background: white; border-radius: 16px; padding: 40px; max-width: 500px; margin: 20px; text-align: center;">
+            <div class="success-animation">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 15px;">Order Placed Successfully!</h2>
+                <p style="color: #666; margin-bottom: 25px;">Thank you for your order. We'll send you a confirmation
+                    message shortly.</p>
+                <div style="background: var(--gray-100); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+                    <div style="font-weight: 600; margin-bottom: 10px;">Order Details:</div>
+                    <div>Order ID: <span id="orderIdDisplay" style="font-weight: 600; color: var(--primary);">#</span>
+                    </div>
+                    <div>Total: <span id="orderTotalDisplay" style="font-weight: 600;">Ksh 0.00</span></div>
+                    <div>Delivery: <span id="orderDeliveryDisplay">Home Delivery</span></div>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button onclick="window.location.href='index.html'" class="newsletter-btn"
+                        style="background: var(--primary);">
+                        Continue Shopping
+                    </button>
+                    <button onclick="window.location.href='index.html'" class="newsletter-btn"
+                        style="background: var(--secondary);">
+                        Go to Homepage
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--secondary); margin-right: 10px;"></i>
+                        Iruma Keria, Tharaka-nithi
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-envelope" style="color: var(--secondary); margin-right: 10px;"></i>
+                        secolpoultry254@gmail.com
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <i class="fas fa-phone" style="color: var(--secondary); margin-right: 10px;"></i>
+                        +254758510206
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="service.html" class="footer-link">Our Services</a>
+                    <a href="team.html" class="footer-link">Meet The Team</a>
+                    <a href="blog.html" class="footer-link">Latest Blog</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <a href="#" class="footer-link">Organic Eggs</a>
+                    <a href="#" class="footer-link">Free Range Chicken</a>
+                    <a href="#" class="footer-link">Fish Farming</a>
+                    <a href="#" class="footer-link">Farm Consulting</a>
+                    <a href="#" class="footer-link">Sustainable Farming</a>
+                    <a href="#" class="footer-link">Farm Tours</a>
+                </div>
+                <div class="footer-section">
+                    <div class="newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to our newsletter for the latest updates and organic farming tips</p>
+                        <form class="newsletter-form"
+                            style="display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-top: 20px;">
+                            <input type="email" class="newsletter-input" placeholder="Your Email" required
+                                style="width: 100%;">
+                            <button type="submit" class="newsletter-btn" style="width: 100%;">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 SECOL POULTRY. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // SECOL POULTRY - Order Placement System
+        (function () {
+            'use strict';
+
+            // Cart storage functions
+            const CartStorage = {
+                get: function () {
+                    try {
+                        const cart = localStorage.getItem('secol_cart');
+                        return cart ? JSON.parse(cart) : [];
+                    } catch (e) {
+                        console.error('Error reading cart:', e);
+                        return [];
+                    }
+                },
+                set: function (cart) {
+                    try {
+                        localStorage.setItem('secol_cart', JSON.stringify(cart));
+                        return true;
+                    } catch (e) {
+                        console.error('Error saving cart:', e);
+                        return false;
+                    }
+                },
+                clear: function () {
+                    try {
+                        localStorage.removeItem('secol_cart');
+                    } catch (e) {
+                        console.error('Error clearing cart:', e);
+                    }
+                }
+            };
+
+            // Order storage functions
+            const OrderStorage = {
+                save: function (order) {
+                    try {
+                        const orders = this.getAll();
+                        orders.push(order);
+                        localStorage.setItem('secol_orders', JSON.stringify(orders));
+                        return true;
+                    } catch (e) {
+                        console.error('Error saving order:', e);
+                        return false;
+                    }
+                },
+                getAll: function () {
+                    try {
+                        const orders = localStorage.getItem('secol_orders');
+                        return orders ? JSON.parse(orders) : [];
+                    } catch (e) {
+                        console.error('Error reading orders:', e);
+                        return [];
+                    }
+                }
+            };
+
+            // Utility functions
+            function formatPrice(price) {
+                return parseFloat(price).toFixed(2);
+            }
+
+            function generateOrderId() {
+                const timestamp = Date.now();
+                const random = Math.random().toString(36).substr(2, 5).toUpperCase();
+                return `SPF${timestamp.toString().slice(-6)}${random}`;
+            }
+
+            function showNotification(message, type = 'info') {
+                const existingNotification = document.querySelector('.notification');
+                if (existingNotification) {
+                    existingNotification.remove();
+                }
+
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+
+                setTimeout(() => notification.classList.add('show'), 10);
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 4000);
+            }
+
+            // Calculate cart total
+            function calculateCartTotal(cart) {
+                return cart.reduce((total, item) => {
+                    return total + (parseFloat(item.price) * (item.quantity || 1));
+                }, 0);
+            }
+
+            // Update cart count
+            function updateCartCount() {
+                const cart = CartStorage.get();
+                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                const badge = document.getElementById('cart-count');
+
+                if (badge) {
+                    badge.textContent = count;
+                    badge.style.display = count > 0 ? 'inline-block' : 'none';
+                }
+
+                return count;
+            }
+
+            // Display order items
+            function displayOrderItems() {
+                const cart = CartStorage.get();
+                const orderItemsContainer = document.getElementById('orderItems');
+
+                if (!orderItemsContainer) return;
+
+                if (cart.length === 0) {
+                    orderItemsContainer.innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px; color: #666;">
+                            <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.3;"></i>
+                            <div style="font-size: 1.1rem; margin-bottom: 10px;">No items in cart</div>
+                            <a href="product.html" style="color: var(--primary); text-decoration: none;">
+                                Browse Products <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                orderItemsContainer.innerHTML = cart.map(item => `
+                    <div class="order-item">
+                        <img src="${item.image || 'img/product-default.png'}" 
+                             alt="${item.name}" 
+                             onerror="this.src='img/product-default.png'">
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-price">Ksh ${formatPrice(item.price)} × ${item.quantity || 1}</div>
+                        </div>
+                        <div class="item-quantity">Qty: ${item.quantity || 1}</div>
+                    </div>
+                `).join('');
+
+                updateOrderSummary();
+            }
+
+            // Update order summary
+            function updateOrderSummary() {
+                const cart = CartStorage.get();
+                const subtotal = calculateCartTotal(cart);
+                const selectedOption = document.querySelector('.delivery-option.selected');
+                const deliveryFee = (selectedOption && selectedOption.dataset.delivery === 'delivery') ? 200 : 0;
+                const total = subtotal + deliveryFee;
+
+                // Update summary in the order summary section
+                const subtotalElement = document.getElementById('subtotalAmount');
+                const deliveryFeeElement = document.getElementById('deliveryFee');
+                const totalElement = document.getElementById('totalAmount');
+                
+                if (subtotalElement) subtotalElement.textContent = `Ksh ${formatPrice(subtotal)}`;
+                if (deliveryFeeElement) deliveryFeeElement.textContent = `Ksh ${formatPrice(deliveryFee)}`;
+                if (totalElement) totalElement.innerHTML = `<strong>Ksh ${formatPrice(total)}</strong>`;
+
+                return { subtotal, deliveryFee, total };
+            }
+
+            // Handle form submission
+            function handleSubmitOrder(e) {
+                e.preventDefault();
+
+                // Get form values
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const deliveryOption = document.querySelector('.delivery-option.selected').dataset.delivery;
+                const address = document.getElementById('address').value.trim();
+                const city = document.getElementById('city').value.trim();
+                const county = document.getElementById('county').value.trim();
+                const notes = document.getElementById('notes').value.trim();
+                const paymentMethod = document.querySelector('.payment-option.selected').dataset.payment;
+                const mpesaPhone = document.getElementById('mpesaPhone')?.value.trim() || '';
+
+                // Basic validation
+                if (!firstName || !lastName || !email || !phone) {
+                    showNotification('Please fill in all required customer information', 'error');
+                    return;
+                }
+
+                if (deliveryOption === 'delivery' && (!address || !city || !county)) {
+                    showNotification('Please fill in all delivery information', 'error');
+                    return;
+                }
+
+                if (paymentMethod === 'mpesa' && !mpesaPhone) {
+                    showNotification('Please enter your M-Pesa phone number', 'error');
+                    return;
+                }
+
+                const cart = CartStorage.get();
+                if (cart.length === 0) {
+                    showNotification('Your cart is empty', 'error');
+                    return;
+                }
+
+                // Create order object
+                const order = {
+                    id: 'ORD-' + Date.now(),
+                    customer: { firstName, lastName, email, phone },
+                    delivery: {
+                        method: deliveryOption,
+                        address: deliveryOption === 'delivery' ? { address, city, county } : null,
+                        notes: notes || null
+                    },
+                    payment: {
+                        method: paymentMethod,
+                        mpesaPhone: paymentMethod === 'mpesa' ? mpesaPhone : null,
+                        status: paymentMethod === 'cod' ? 'pending' : 'processing'
+                    },
+                    items: cart,
+                    subtotal: calculateCartTotal(cart),
+                    deliveryFee: deliveryOption === 'delivery' ? 200 : 0,
+                    total: calculateCartTotal(cart) + (deliveryOption === 'delivery' ? 200 : 0),
+                    status: 'pending',
+                    createdAt: new Date().toISOString()
+                };
+
+                // In a real app, you would send this to your backend
+                // For now, we'll store it in localStorage
+                const orders = JSON.parse(localStorage.getItem('secol_orders') || '[]');
+                orders.push(order);
+                localStorage.setItem('secol_orders', JSON.stringify(orders));
+
+                // Clear the cart
+                CartStorage.clear();
+
+                // Show success message
+                showOrderSuccess(order);
+            }
+
+            // Show order success modal
+            function showOrderSuccess(order) {
+                const modal = document.getElementById('successModal');
+                const orderIdElement = document.getElementById('orderId');
+                const orderTotalElement = document.getElementById('orderTotal');
+                const orderItemsList = document.getElementById('orderItemsList');
+
+                if (orderIdElement) orderIdElement.textContent = order.id;
+                if (orderTotalElement) orderTotalElement.textContent = `Ksh ${formatPrice(order.total)}`;
+
+                // Populate order items
+                if (orderItemsList) {
+                    orderItemsList.innerHTML = order.items.map(item => `
+                        <div class="order-item">
+                            <span>${item.name} × ${item.quantity || 1}</span>
+                            <span>Ksh ${formatPrice(item.price * (item.quantity || 1))}</span>
+                        </div>
+                    `).join('');
+                }
+
+                // Show the modal
+                modal.style.display = 'flex';
+
+                // Close modal when clicking outside
+                modal.onclick = function (e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                };
+
+                // Close button
+                const closeBtn = document.querySelector('.close-modal');
+                if (closeBtn) {
+                    closeBtn.onclick = function () {
+                        modal.style.display = 'none';
+                    };
+                }
+            }
+
+            // Toggle required attribute on delivery address fields
+            function toggleDeliveryAddressRequired(required) {
+                const addressFields = document.querySelectorAll('#deliveryAddress [required]');
+                addressFields.forEach(field => {
+                    if (required) {
+                        field.required = true;
+                        field.closest('.form-group').classList.add('required');
+                    } else {
+                        field.required = false;
+                        field.closest('.form-group').classList.remove('required');
+                    }
+                });
+            }
+
+            // Update delivery fee in the order summary
+            function updateDeliveryFee() {
+                const selectedOption = document.querySelector('.delivery-option.selected');
+                const isDelivery = selectedOption && selectedOption.dataset.delivery === 'delivery';
+                const deliveryFee = isDelivery ? 200 : 0;
+                
+                const deliveryFeeElement = document.getElementById('deliveryFee');
+                if (deliveryFeeElement) {
+                    deliveryFeeElement.textContent = `Ksh ${deliveryFee.toFixed(2)}`;
+                }
+                
+                return deliveryFee;
+            }
+
+            // Initialize event listeners
+            function initEventListeners() {
+                // Delivery options
+                const deliveryOptions = document.querySelectorAll('.delivery-option');
+                const deliveryAddress = document.getElementById('deliveryAddress');
+                
+                deliveryOptions.forEach(option => {
+                    option.addEventListener('click', function () {
+                        // Remove selected class from all options first
+                        deliveryOptions.forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                        
+                        // Add selected class to clicked option
+                        this.classList.add('selected');
+
+                        // Check if delivery is selected
+                        const isDelivery = this.dataset.delivery === 'delivery';
+                        
+                        // Toggle delivery address fields with animation
+                        if (isDelivery) {
+                            if (deliveryAddress) {
+                                deliveryAddress.style.display = 'block';
+                                setTimeout(() => {
+                                    deliveryAddress.style.opacity = '1';
+                                }, 10);
+                            }
+                            toggleDeliveryAddressRequired(true);
+                        } else {
+                            if (deliveryAddress) {
+                                deliveryAddress.style.opacity = '0';
+                                setTimeout(() => {
+                                    deliveryAddress.style.display = 'none';
+                                    toggleDeliveryAddressRequired(false);
+                                }, 300);
+                            }
+                        }
+
+                        // Update order summary with new delivery fee
+                        updateDeliveryFee();
+                        updateOrderSummary();
+
+                        // Show visual feedback
+                        showNotification(
+                            isDelivery 
+                                ? 'Home delivery selected. Please provide your delivery address.' 
+                                : 'Farm pickup selected. No delivery fee will be charged.',
+                            'info'
+                        );
+                    });
+                });
+
+                // Payment methods
+                const paymentOptions = document.querySelectorAll('.payment-option');
+                paymentOptions.forEach(option => {
+                    option.addEventListener('click', function () {
+                        paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                        this.classList.add('selected');
+
+                        // Toggle M-Pesa details
+                        const mpesaDetails = document.getElementById('mpesaDetails');
+                        if (this.dataset.payment === 'mpesa') {
+                            mpesaDetails.style.display = 'block';
+                        } else {
+                            mpesaDetails.style.display = 'none';
+                        }
+                    });
+                });
+
+                // Form submission
+                const orderForm = document.getElementById('orderForm');
+                if (orderForm) {
+                    orderForm.addEventListener('submit', handleSubmitOrder);
+                }
+
+                // Initialize delivery address visibility based on selected option
+                const initialDeliveryOption = document.querySelector('.delivery-option.selected');
+                // deliveryAddress variable already declared earlier
+                
+                if (initialDeliveryOption) {
+                    const isDelivery = initialDeliveryOption.dataset.delivery === 'delivery';
+                    if (deliveryAddress) {
+                        if (isDelivery) {
+                            deliveryAddress.style.display = 'block';
+                            deliveryAddress.style.opacity = '1';
+                            toggleDeliveryAddressRequired(true);
+                        } else {
+                            deliveryAddress.style.display = 'none';
+                            deliveryAddress.style.opacity = '0';
+                            toggleDeliveryAddressRequired(false);
+                        }
+                    }
+                } else {
+                    // If no option is selected, default to pickup
+                    const pickupOption = document.querySelector('.delivery-option[data-delivery="pickup"]');
+                    if (pickupOption) {
+                        pickupOption.classList.add('selected');
+                        if (deliveryAddress) {
+                            deliveryAddress.style.display = 'none';
+                            deliveryAddress.style.opacity = '0';
+                        }
+                        toggleDeliveryAddressRequired(false);
+                    }
+                }
+
+                // Initialize M-Pesa details visibility
+                const initialPaymentMethod = document.querySelector('.payment-option.selected').dataset.payment;
+                const mpesaDetails = document.getElementById('mpesaDetails');
+                if (initialPaymentMethod === 'mpesa') {
+                    mpesaDetails.style.display = 'block';
+                } else {
+                    mpesaDetails.style.display = 'none';
+                }
+            }
+
+            // Initialize the page
+            function initialize() {
+                displayOrderItems();
+                updateOrderSummary();
+                initEventListeners();
+
+                // Check if cart is empty
+                const cart = CartStorage.get();
+                if (cart.length === 0) {
+                    showNotification('Your cart is empty. Please add items before placing an order.', 'info');
+                }
+            }
+
+            // Start the application
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initialize);
+            } else {
+                initialize();
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

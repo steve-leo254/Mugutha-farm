@@ -400,7 +400,7 @@
             function removeFromCart(itemId) {
                 let cart = CartStorage.get();
                 const initialLength = cart.length;
-                cart = cart.filter(item => item.id !== itemId);
+                cart = cart.filter(item => item.id.toString() !== itemId.toString());
                 
                 if (cart.length < initialLength) {
                     CartStorage.set(cart);
@@ -413,12 +413,12 @@
             }
 
             // Update item quantity
-            function updateQuantity(itemId, newQuantity) {
+            function updateQuantity(itemId, newQuantity, element) {
                 console.log('updateQuantity called with:', { itemId, newQuantity });
                 
                 // Get current cart
                 const cart = CartStorage.get();
-                const itemIndex = cart.findIndex(item => item.id === itemId);
+                const itemIndex = cart.findIndex(item => item.id.toString() === itemId.toString());
                 
                 // Validate item exists
                 if (itemIndex === -1) {
@@ -443,8 +443,28 @@
                     // Save to storage
                     CartStorage.set(cart);
                     
-                    // Update the display
-                    displayCartItems();
+                    // Update the UI directly without refreshing the whole cart
+                    const row = element.closest('tr');
+                    if (row) {
+                        const priceCell = row.querySelector('.item-price');
+                        const totalCell = row.querySelector('.item-total');
+                        const price = parseFloat(priceCell.textContent.replace(/[^0-9.]/g, ''));
+                        const total = price * quantity;
+                        totalCell.textContent = `Ksh ${formatPrice(total)}`;
+                        
+                        // Update the input value
+                        const input = row.querySelector('.quantity-input');
+                        if (input) input.value = quantity;
+                        
+                        // Update the minus button disabled state
+                        const minusBtn = row.querySelector('.quantity-controls button:first-child');
+                        if (minusBtn) {
+                            minusBtn.disabled = quantity <= 1;
+                        }
+                    }
+                    
+                    // Update the cart summary
+                    updateTotals(cart);
                     updateCartCount();
                     
                     console.log('Cart after update:', cart);
@@ -455,6 +475,27 @@
                     showNotification('Error updating cart: ' + error.message, 'error');
                     return false;
                 }
+            }
+            
+            // Update cart totals
+            function updateTotals(cart) {
+                const cartTotalElement = document.getElementById('cartTotal');
+                const subtotal = cart.reduce((sum, item) => {
+                    return sum + (item.price * (item.quantity || 1));
+                }, 0);
+                
+                const shipping = subtotal > 0 ? 200 : 0; // Example shipping cost
+                const total = subtotal + shipping;
+                
+                // Update the summary section
+                const subtotalElement = document.getElementById('subtotalAmount');
+                const shippingElement = document.getElementById('shippingAmount');
+                const totalElement = document.getElementById('summaryTotal');
+                
+                if (subtotalElement) subtotalElement.textContent = `Ksh ${formatPrice(subtotal)}`;
+                if (shippingElement) shippingElement.textContent = `Ksh ${formatPrice(shipping)}`;
+                if (totalElement) totalElement.textContent = `Ksh ${formatPrice(total)}`;
+                if (cartTotalElement) cartTotalElement.textContent = formatPrice(total);
             }
 
             // Display cart items in checkout table
@@ -507,13 +548,13 @@
                                 </div>
                             </div>
                         </td>
-                        <td style="font-weight: 600;">
+                        <td style="font-weight: 600;" class="item-price">
                             Ksh ${formatPrice(item.price)}
                         </td>
                         <td>
                             <div class="quantity-controls" style="display: flex; align-items: center;">
                                 <button type="button" 
-                                    onclick="const input = this.nextElementSibling; let qty = parseInt(input.value || 1); qty = Math.max(1, qty - 1); input.value = qty; window.updateQuantity('${item.id}', qty); return false;"
+                                    onclick="const input = this.nextElementSibling; let qty = parseInt(input.value || 1); qty = Math.max(1, qty - 1); input.value = qty; window.updateQuantity('${item.id}', qty, this); return false;"
                                     style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f8f9fa; cursor: pointer; border-radius: 4px 0 0 4px;"
                                     ${(item.quantity || 1) <= 1 ? 'disabled' : ''}>
                                     -
@@ -522,24 +563,28 @@
                                     id="qty-${item.id}"
                                     value="${item.quantity || 1}" 
                                     min="1" 
-                                    onchange="window.updateQuantity('${item.id}', this.value); return false;"
-                                    onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.updateQuantity('${item.id}', this.value); return false; }"
-                                    style="width: 50px; text-align: center; margin: 0; padding: 5px; border: 1px solid #ddd; border-left: none; border-right: none; -moz-appearance: textfield;">
+                                    onchange="window.updateQuantity('${item.id}', this.value, this); return false;"
+                                    onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.updateQuantity('${item.id}', this.value, this); return false; }"
+                                    style="width: 50px; text-align: center; margin: 0; padding: 5px; border: 1px solid #ddd; border-left: none; border-right: none; -moz-appearance: textfield;"
+                                    class="quantity-input">
                                 <button type="button" 
-                                    onclick="const input = this.previousElementSibling; let qty = parseInt(input.value || 1) + 1; input.value = qty; window.updateQuantity('${item.id}', qty); return false;"
+                                    onclick="const input = this.previousElementSibling; let qty = parseInt(input.value || 1) + 1; input.value = qty; window.updateQuantity('${item.id}', qty, this); return false;"
                                     style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f8f9fa; cursor: pointer; border-radius: 0 4px 4px 0;">
                                     +
                                 </button>
                             </div>
                         </td>
-                        <td style="font-weight: 600; color: var(--primary);">
+                        <td style="font-weight: 600; color: var(--primary);" class="item-total">
                             Ksh ${formatPrice(itemTotal)}
                         </td>
                         <td>
-                            <button class="remove-btn" onclick="return window.removeCartItem('${item.id}', event);"
+                            <button class="remove-btn" 
+                                data-item-id="${item.id}"
+                                onclick="window.removeFromCart('${item.id}'); return false;"
                                 style="background: #ff4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 0.9rem;"
                                 onmouseover="this.style.opacity='0.9'"
-                                onmouseout="this.style.opacity='1'">
+                                onmouseout="this.style.opacity='1'"
+                                title="Remove item">
                                 <i class="fas fa-trash-alt" style="font-size: 0.8rem;"></i>
                                 Remove
                             </button>
@@ -559,14 +604,27 @@
                 const summaryTotalElement = document.getElementById('summaryTotal');
                 
                 if (subtotalElement) {
-                    subtotalElement.textContent = `Ksh ${formatPrice(total)}`;
+                    subtotalElement.textContent = `Ksh ${formatPrice(total)}`;  
                 }
                 if (summaryTotalElement) {
                     summaryTotalElement.textContent = `Ksh ${formatPrice(total)}`;
                 }
 
                 console.log('[Checkout] Cart displayed:', cart.length, 'items, Total: Ksh', formatPrice(total));
+
+                // Attach remove button listeners
+                const removeButtons = cartItemsContainer.querySelectorAll('.remove-btn');
+                removeButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const id = btn.getAttribute('data-item-id');
+                        removeFromCart(id);
+                    });
+                });
             }
+
+            // Expose functions globally for inline event handlers
+            window.removeFromCart = removeFromCart;
+            window.updateQuantity = updateQuantity;
 
             // Initialize checkout page
             function initializeCheckout() {
@@ -594,7 +652,7 @@
                         if (cart.length === 0) {
                             showNotification('Your cart is empty', 'error');
                         } else {
-                            showNotification('Order placement not yet implemented', 'info');
+                            showNotification('Order placement ');
                         }
                     });
                 }
@@ -619,25 +677,33 @@
                 }
             };
 
+            // Global remove function that handles both string and number IDs
             window.removeCartItem = function(itemId, event) {
-                console.log('removeCartItem called:', itemId);
+                console.log('removeCartItem called with ID:', itemId, 'Type:', typeof itemId);
                 if (event) {
                     event.preventDefault();
                     event.stopPropagation();
                 }
                 
                 const cart = CartStorage.get();
+                console.log('Current cart items:', cart);
+                
+                // Convert itemId to string for consistent comparison
+                const itemIdStr = String(itemId);
                 const initialLength = cart.length;
-                const updatedCart = cart.filter(item => item.id !== itemId);
+                
+                // Filter out the item with matching ID (comparing as strings)
+                const updatedCart = cart.filter(item => String(item.id) !== itemIdStr);
                 
                 if (updatedCart.length < initialLength) {
                     CartStorage.set(updatedCart);
                     displayCartItems();
                     updateCartCount();
-                    showNotification('Item removed from cart', 'info');
+                    showNotification('Item removed from cart', 'success');
                     console.log('Item removed successfully');
                 } else {
-                    console.warn('Item not found in cart:', itemId);
+                    console.warn('Item not found in cart. ID:', itemId, 'Type:', typeof itemId);
+                    console.warn('Available IDs in cart:', cart.map(item => ({id: item.id, type: typeof item.id})));
                     showNotification('Item not found in cart', 'error');
                 }
                 return false;
@@ -657,10 +723,60 @@
 
             // Initialize when DOM is ready
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initializeCheckout);
+                document.addEventListener('DOMContentLoaded', function() {
+                    initializeCheckout();
+                    setupPlaceOrderButton();
+                });
             } else {
                 initializeCheckout();
+                setupPlaceOrderButton();
             }
+            
+            // Setup place order button click handler
+            function setupPlaceOrderButton() {
+                const placeOrderBtn = document.getElementById('placeOrderBtn');
+                if (placeOrderBtn) {
+                    placeOrderBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Get current cart
+                        const cart = CartStorage.get();
+                        
+                        // Check if cart is empty
+                        if (cart.length === 0) {
+                            showNotification('Your cart is empty. Please add items before placing an order.', 'error');
+                            return;
+                        }
+                        
+                        // Redirect to place order page
+                        window.location.href = 'place-order.html';
+                    });
+                } else {
+                    console.warn('Place Order button not found');
+                }
+            }
+
+            // Add event delegation for remove buttons
+            document.addEventListener('click', function(event) {
+                // Check if the clicked element or its parent has the remove-btn class
+                const removeBtn = event.target.closest('.remove-btn');
+                if (removeBtn) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    // Get the item ID from the button's data attribute or parent row
+                    const itemId = removeBtn.getAttribute('data-item-id') || 
+                                 (removeBtn.closest('tr') && removeBtn.closest('tr').getAttribute('data-item-id'));
+                    
+                    if (itemId) {
+                        console.log('Remove button clicked for item ID:', itemId);
+                        window.removeCartItem(itemId, event);
+                    } else {
+                        console.warn('Could not find item ID for remove button');
+                    }
+                    return false;
+                }
+            });
 
         })();
     </script>
