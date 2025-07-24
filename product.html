@@ -16,7 +16,7 @@
     <link rel="icon" href="img/hen.png">
 
     <style>
-        /* Quick inline styles for cart functionality */
+        /* Enhanced responsive styles for cart functionality */
         .cart-notification {
             position: fixed;
             top: 20px;
@@ -68,6 +68,168 @@
 
             50% {
                 transform: scale(1.2);
+            }
+        }
+
+        /* Enhanced responsive product image styling */
+        .product-card {
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            object-position: center;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e5e5;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        /* Tablet responsiveness */
+        @media (max-width: 1024px) {
+            .product-card img {
+                height: 200px;
+                padding: 12px;
+            }
+        }
+
+        /* Mobile landscape */
+        @media (max-width: 768px) {
+            .product-card img {
+                height: 180px !important;
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .product-card h4 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .cart-notification {
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                padding: 12px 15px;
+            }
+        }
+
+        /* Mobile portrait */
+        @media (max-width: 480px) {
+            .product-card img {
+                height: 150px !important;
+                padding: 8px;
+                margin-bottom: 12px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .product-card {
+                padding: 15px;
+            }
+
+            .product-card h4 {
+                font-size: 0.95rem;
+                text-align: center;
+            }
+
+            .newsletter-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 360px) {
+            .product-card img {
+                height: 130px !important;
+                padding: 6px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Image loading placeholder */
+        .product-card img {
+            background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
+                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        .product-card img[src] {
+            background-image: none;
+        }
+
+        /* Price styling improvements */
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 480px) {
+            .product-price {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Enhanced grid responsiveness */
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                gap: 20px;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid {
+                gap: 15px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -352,7 +514,7 @@
 
             // Cart storage using localStorage
             const CartStorage = {
-                get: function() {
+                get: function () {
                     try {
                         const cart = localStorage.getItem('secol_cart');
                         return cart ? JSON.parse(cart) : [];
@@ -361,7 +523,7 @@
                         return [];
                     }
                 },
-                set: function(cart) {
+                set: function (cart) {
                     try {
                         localStorage.setItem('secol_cart', JSON.stringify(cart));
                         return true;
@@ -370,7 +532,7 @@
                         return false;
                     }
                 },
-                clear: function() {
+                clear: function () {
                     try {
                         localStorage.removeItem('secol_cart');
                     } catch (e) {

@@ -643,6 +643,18 @@
                     });
                 });
 
+                // Delegate remove button clicks
+                const cartItemsContainer = document.getElementById('cartItems');
+                if (cartItemsContainer) {
+                    cartItemsContainer.addEventListener('click', function(e) {
+                        const btn = e.target.closest('.remove-btn');
+                        if (btn) {
+                            const id = btn.getAttribute('data-item-id');
+                            removeFromCart(id);
+                        }
+                    });
+                }
+
                 // Handle place order button
                 const placeOrderBtn = document.getElementById('placeOrderBtn');
                 if (placeOrderBtn) {
