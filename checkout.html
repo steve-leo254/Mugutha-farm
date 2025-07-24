@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/about.css">
+    <link rel="icon" href="img/hen.png">
     
     <style>
         /* Cart notification styles */
@@ -177,7 +178,7 @@
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="service.html" class="nav-link">Services</a></li>
                     <li><a href="team.html" class="nav-link">Team</a></li>
-                    <li><a href="blog.html" class="nav-link">blog</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="cart-container" style="position: relative; margin-left: 18px;">
@@ -229,8 +230,11 @@
                     <a href="product.html" class="btn-hero" style="padding: 10px 24px;">Continue Shopping</a>
                 </div>
 
+                <!-- Spacer between cart and payment -->
+                <div style="margin-top: 40px;"></div>
+                
                 <!-- Payment Details -->
-                <div>
+                <div style="margin-top: 30px;">
                     <div class="feature-item" style="background: white; border-radius: 16px; box-shadow: var(--shadow);">
                         <h2 class="section-title font-display" style="font-size: 1.3rem;">Payment Details</h2>
                         <form id="paymentForm" class="newsletter-form" style="flex-direction: column; gap: 15px; max-width: 400px;">
@@ -313,19 +317,31 @@
             'use strict';
 
             // Global cart data - synchronized across pages
-            window.SECOL_CART = window.SECOL_CART || [];
-
-            // Cart storage system
             const CartStorage = {
                 get: function() {
-                    return window.SECOL_CART;
+                    try {
+                        const cart = localStorage.getItem('secol_cart');
+                        return cart ? JSON.parse(cart) : [];
+                    } catch (e) {
+                        console.error('Error reading cart from localStorage:', e);
+                        return [];
+                    }
                 },
                 set: function(cart) {
-                    window.SECOL_CART = cart;
-                    return true;
+                    try {
+                        localStorage.setItem('secol_cart', JSON.stringify(cart));
+                        return true;
+                    } catch (e) {
+                        console.error('Error saving cart to localStorage:', e);
+                        return false;
+                    }
                 },
                 clear: function() {
-                    window.SECOL_CART = [];
+                    try {
+                        localStorage.removeItem('secol_cart');
+                    } catch (e) {
+                        console.error('Error clearing cart from localStorage:', e);
+                    }
                 }
             };
 
@@ -398,16 +414,46 @@
 
             // Update item quantity
             function updateQuantity(itemId, newQuantity) {
-                const cart = CartStorage.get();
-                const item = cart.find(item => item.id === itemId);
+                console.log('updateQuantity called with:', { itemId, newQuantity });
                 
-                if (item && newQuantity > 0) {
-                    item.quantity = parseInt(newQuantity);
+                // Get current cart
+                const cart = CartStorage.get();
+                const itemIndex = cart.findIndex(item => item.id === itemId);
+                
+                // Validate item exists
+                if (itemIndex === -1) {
+                    console.warn('Item not found in cart:', itemId);
+                    showNotification('Item not found in cart', 'error');
+                    return false;
+                }
+                
+                // Parse and validate quantity
+                let quantity = parseInt(newQuantity, 10);
+                if (isNaN(quantity) || quantity < 1) {
+                    console.error('Invalid quantity:', newQuantity);
+                    quantity = 1; // Default to 1 if invalid
+                }
+                
+                console.log('Updating item', itemId, 'quantity to', quantity);
+                
+                // Update the item
+                cart[itemIndex].quantity = quantity;
+                
+                try {
+                    // Save to storage
                     CartStorage.set(cart);
+                    
+                    // Update the display
                     displayCartItems();
                     updateCartCount();
-                } else if (newQuantity <= 0) {
-                    removeFromCart(itemId);
+                    
+                    console.log('Cart after update:', cart);
+                    return true;
+                    
+                } catch (error) {
+                    console.error('Error updating cart:', error);
+                    showNotification('Error updating cart: ' + error.message, 'error');
+                    return false;
                 }
             }
 
@@ -465,18 +511,24 @@
                             Ksh ${formatPrice(item.price)}
                         </td>
                         <td>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn" onclick="updateItemQuantity('${item.id}', ${item.quantity - 1})" 
-                                        ${item.quantity <= 1 ? 'disabled' : ''}>
-                                    <i class="fas fa-minus" style="font-size: 0.8rem;"></i>
+                            <div class="quantity-controls" style="display: flex; align-items: center;">
+                                <button type="button" 
+                                    onclick="const input = this.nextElementSibling; let qty = parseInt(input.value || 1); qty = Math.max(1, qty - 1); input.value = qty; window.updateQuantity('${item.id}', qty); return false;"
+                                    style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f8f9fa; cursor: pointer; border-radius: 4px 0 0 4px;"
+                                    ${(item.quantity || 1) <= 1 ? 'disabled' : ''}>
+                                    -
                                 </button>
                                 <input type="number" 
-                                       class="quantity-input"
-                                       value="${item.quantity || 1}" 
-                                       min="1" 
-                                       onchange="updateItemQuantity('${item.id}', this.value)">
-                                <button class="quantity-btn" onclick="updateItemQuantity('${item.id}', ${(item.quantity || 1) + 1})">
-                                    <i class="fas fa-plus" style="font-size: 0.8rem;"></i>
+                                    id="qty-${item.id}"
+                                    value="${item.quantity || 1}" 
+                                    min="1" 
+                                    onchange="window.updateQuantity('${item.id}', this.value); return false;"
+                                    onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.updateQuantity('${item.id}', this.value); return false; }"
+                                    style="width: 50px; text-align: center; margin: 0; padding: 5px; border: 1px solid #ddd; border-left: none; border-right: none; -moz-appearance: textfield;">
+                                <button type="button" 
+                                    onclick="const input = this.previousElementSibling; let qty = parseInt(input.value || 1) + 1; input.value = qty; window.updateQuantity('${item.id}', qty); return false;"
+                                    style="width: 30px; height: 30px; border: 1px solid #ddd; background: #f8f9fa; cursor: pointer; border-radius: 0 4px 4px 0;">
+                                    +
                                 </button>
                             </div>
                         </td>
@@ -484,7 +536,10 @@
                             Ksh ${formatPrice(itemTotal)}
                         </td>
                         <td>
-                            <button class="remove-btn" onclick="removeCartItem('${item.id}')">
+                            <button class="remove-btn" onclick="return window.removeCartItem('${item.id}', event);"
+                                style="background: #ff4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 0.9rem;"
+                                onmouseover="this.style.opacity='0.9'"
+                                onmouseout="this.style.opacity='1'">
                                 <i class="fas fa-trash-alt" style="font-size: 0.8rem;"></i>
                                 Remove
                             </button>
@@ -493,54 +548,33 @@
                     cartItemsContainer.appendChild(row);
                 });
 
-                // Update cart total
+                // Update cart total and order summary
                 const total = calculateCartTotal();
                 if (cartTotalElement) {
                     cartTotalElement.textContent = formatPrice(total);
                 }
+                
+                // Update order summary
+                const subtotalElement = document.getElementById('subtotalAmount');
+                const summaryTotalElement = document.getElementById('summaryTotal');
+                
+                if (subtotalElement) {
+                    subtotalElement.textContent = `Ksh ${formatPrice(total)}`;
+                }
+                if (summaryTotalElement) {
+                    summaryTotalElement.textContent = `Ksh ${formatPrice(total)}`;
+                }
 
                 console.log('[Checkout] Cart displayed:', cart.length, 'items, Total: Ksh', formatPrice(total));
-            }
-
-            // Add demo items for testing
-            function addDemoItems() {
-                const demoItems = [
-                    {
-                        id: generateId(),
-                        name: 'Kuku Kienyeji',
-                        price: 1200,
-                        quantity: 1,
-                        image: 'img/jogoo.jpg'
-                    },
-                    {
-                        id: generateId(),
-                        name: 'Improved Egg',
-                        price: 30,
-                        quantity: 6,
-                        image: 'img/egg-png-ima.png'
-                    }
-                ];
-
-                CartStorage.set(demoItems);
-                displayCartItems();
-                updateCartCount();
-                showNotification('Demo items added to cart', 'success');
-                console.log('[Checkout] Demo items added:', demoItems);
             }
 
             // Initialize checkout page
             function initializeCheckout() {
                 console.log('[Checkout] Initializing checkout system...');
 
-                // Check if cart is empty and add demo items
-                const cart = CartStorage.get();
-                if (cart.length === 0) {
-                    console.log('[Checkout] Cart is empty, adding demo items...');
-                    addDemoItems();
-                } else {
-                    displayCartItems();
-                    updateCartCount();
-                }
+                // Display actual cart items (no demo items)
+                displayCartItems();
+                updateCartCount();
 
                 // Handle form submissions
                 const forms = document.querySelectorAll('form');
@@ -569,12 +603,44 @@
             }
 
             // Make functions available globally
-            window.updateItemQuantity = function(itemId, newQuantity) {
-                updateQuantity(itemId, parseInt(newQuantity));
+            window.updateItemQuantity = function(itemId, newQuantity, event) {
+                try {
+                    if (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    
+                    console.log('Updating item:', itemId, 'New quantity:', newQuantity);
+                    updateQuantity(itemId, newQuantity);
+                    return false;
+                } catch (error) {
+                    console.error('Error in updateItemQuantity:', error);
+                    return false;
+                }
             };
 
-            window.removeCartItem = function(itemId) {
-                removeFromCart(itemId);
+            window.removeCartItem = function(itemId, event) {
+                console.log('removeCartItem called:', itemId);
+                if (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                
+                const cart = CartStorage.get();
+                const initialLength = cart.length;
+                const updatedCart = cart.filter(item => item.id !== itemId);
+                
+                if (updatedCart.length < initialLength) {
+                    CartStorage.set(updatedCart);
+                    displayCartItems();
+                    updateCartCount();
+                    showNotification('Item removed from cart', 'info');
+                    console.log('Item removed successfully');
+                } else {
+                    console.warn('Item not found in cart:', itemId);
+                    showNotification('Item not found in cart', 'error');
+                }
+                return false;
             };
 
             // Debug functions
@@ -586,7 +652,6 @@
                     updateCartCount();
                     showNotification('Cart cleared', 'info');
                 },
-                addDemoItems: addDemoItems,
                 calculateTotal: calculateCartTotal
             };
 
